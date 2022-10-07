@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="vtbmt">
+        <createTable tableName="VTBMT_ACHVIEMENT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_ACHVIEMENT"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+            <column name="DATE_OF_RECEIVING" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="vtbmt">
+        <createTable tableName="VTBMT_EMPLOYEE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_EMPLOYEE"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="FIRST_NAME" type="VARCHAR(255)"/>
+            <column name="LAST_NAME" type="VARCHAR(255)"/>
+            <column name="PRIVATE_KEY" type="VARCHAR(255)"/>
+            <column name="DEPARTAMENT" type="VARCHAR(255)"/>
+            <column name="POSITION" type="VARCHAR(255)"/>
+            <column name="USER_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="vtbmt">
+        <createTable tableName="VTBMT_EVENT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_EVENT"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+            <column name="DATE_START" type="DATETIME"/>
+            <column name="DATE_END" type="DATETIME"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="vtbmt">
+        <createTable tableName="VTBMT_EVENT_achviements">
+            <column name="achviements_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_EVENT_ACHVIEMENTS"/>
+            </column>
+            <column name="vtbmt_Event_ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_EVENT_ACHVIEMENTS"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="vtbmt">
+        <createTable tableName="VTBMT_NEWS">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_NEWS"/>
+            </column>
+            <column name="TITLE" type="VARCHAR(255)"/>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+            <column name="EMPLOYEE_ID" type="UUID"/>
+            <column name="DATE_PUBLICATION" type="DATETIME"/>
+            <column name="ACCEPT" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="achviements_ID" baseTableName="VTBMT_EVENT_achviements"
+                                 constraintName="FK_VTBEVEACH_ON_ACHVIEMENT" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_ACHVIEMENT"/>
+    </changeSet>
+    <changeSet id="7" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="vtbmt_Event_ID" baseTableName="VTBMT_EVENT_achviements"
+                                 constraintName="FK_VTBEVEACH_ON_EVENT" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_EVENT"/>
+    </changeSet>
+    <changeSet id="8" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="USER_ID" baseTableName="VTBMT_EMPLOYEE"
+                                 constraintName="FK_VTBMT_EMPLOYEE_ON_USER" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_USER"/>
+    </changeSet>
+    <changeSet id="9" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="VTBMT_NEWS"
+                                 constraintName="FK_VTBMT_NEWS_ON_EMPLOYEE" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_EMPLOYEE"/>
+    </changeSet>
+</databaseChangeLog>
