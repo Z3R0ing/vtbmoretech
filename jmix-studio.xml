@@ -23,7 +23,7 @@
                 <value>
                   <DataStoreSettings>
                     <option name="supportedTypes">
-                      <option value="hsql" />
+                      <option value="postgres" />
                     </option>
                   </DataStoreSettings>
                 </value>
