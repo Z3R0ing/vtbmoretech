@@ -38,6 +38,11 @@
         </form>
         <groupBox id="achviementsBox" caption="msg://ru.wherebackend.vtbmoretech.entity/Event.achviements">
             <table id="achviementsTable" dataContainer="achviementsDc" width="100%" height="200px">
+                <actions>
+                    <action id="createAction" type="create"/>
+                    <action id="editAction" type="edit"/>
+                    <action id="removeAction" type="remove"/>
+                </actions>
                 <columns>
                     <column id="name"/>
                     <column id="description"/>
