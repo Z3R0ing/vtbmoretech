@@ -32,7 +32,7 @@ public class News {
     private Date datePublication;
 
     @Column(name = "ACCEPT")
-    private boolean accept;
+    private Boolean accept = false;
 
     public UUID getId() {
         return id;
@@ -74,11 +74,11 @@ public class News {
         this.datePublication = datePublication;
     }
 
-    public boolean isAccept() {
+    public Boolean isAccept() {
         return accept;
     }
 
-    public void setAccept(boolean accept) {
+    public void setAccept(Boolean accept) {
         this.accept = accept;
     }
 }

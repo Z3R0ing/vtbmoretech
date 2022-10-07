@@ -37,9 +37,9 @@
                 dataLoader="newsCollectionDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="newsTable"
-                    width="100%"
-                    dataContainer="newsCollectionDc">
+        <table id="newsTable"
+               width="100%"
+               dataContainer="newsCollectionDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -50,6 +50,7 @@
                 <column id="description"/>
                 <column id="employee"/>
                 <column id="datePublication"/>
+                <column id="accept"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
@@ -58,7 +59,7 @@
                 <button id="editBtn" action="newsTable.edit"/>
                 <button id="removeBtn" action="newsTable.remove"/>
             </buttonsPanel>
-        </groupTable>
+        </table>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>

@@ -38,6 +38,7 @@
                     </actions>
                 </entityPicker>
                 <dateField id="datePublicationField" property="datePublication"/>
+                <checkBox id="acceptField" property="accept"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">
