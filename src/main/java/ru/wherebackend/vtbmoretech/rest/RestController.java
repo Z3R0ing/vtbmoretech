@@ -1,4 +1,4 @@
-package ru.wherebackend.vtbmoretech.screen.rest;
+package ru.wherebackend.vtbmoretech.rest;
 
 import io.jmix.core.DataManager;
 import org.springframework.beans.factory.annotation.Autowired;

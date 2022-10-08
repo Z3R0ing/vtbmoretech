@@ -12,7 +12,7 @@ import ru.wherebackend.vtbmoretech.entity.Employee;
 
 @Component("vtbmt_GetKeys")
 @Service
-public class GetKeys {
+public class CreateWallet {
 
     @Autowired
     private DataManager dataManager;
