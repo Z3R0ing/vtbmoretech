@@ -15,6 +15,8 @@
         <item screen="vtbmt_Category.browse"
               caption="msg://ru.wherebackend.vtbmoretech.screen.category/categoryBrowse.menu"/>
         <item screen="vtbmt_NFT.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.nft/NFTBrowse.menu"/>
+        <item screen="vtbmt_SaleNFT.browse"
+              caption="msg://ru.wherebackend.vtbmoretech.screen.salenft/saleNFTBrowse.menu"/>
     </menu>
 
 </menu-config>

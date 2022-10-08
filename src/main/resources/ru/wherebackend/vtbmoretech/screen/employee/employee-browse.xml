@@ -7,6 +7,7 @@
                     class="ru.wherebackend.vtbmoretech.entity.employee.Employee">
             <fetchPlan extends="_base">
                 <property name="user" fetchPlan="_base"/>
+                <property name="department" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="employeesDl">
                 <query>
@@ -52,6 +53,8 @@
                 <column id="departament"/>
                 <column id="position"/>
                 <column id="user"/>
+                <column id="publicKey"/>
+                <column id="department"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
