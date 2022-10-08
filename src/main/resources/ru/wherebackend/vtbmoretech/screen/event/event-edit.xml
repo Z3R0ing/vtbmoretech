@@ -5,11 +5,8 @@
     <data>
         <instance id="eventDc"
                   class="ru.wherebackend.vtbmoretech.entity.event.Event">
-            <fetchPlan extends="_base">
-                <property name="achievements" fetchPlan="_base"/>
-            </fetchPlan>
+            <fetchPlan extends="_base"/>
             <loader/>
-            <collection id="achviementsDc" property="achievements"/>
         </instance>
     </data>
     <facets>
@@ -34,22 +31,10 @@
                 <textField id="descriptionField" property="description"/>
                 <dateField id="dateStartField" property="dateStart"/>
                 <dateField id="dateEndField" property="dateEnd"/>
+                <dateField id="codeExpField" property="codeExp"/>
+                <textField id="codeField" property="code"/>
             </column>
         </form>
-        <groupBox id="achviementsBox" caption="msg://ru.wherebackend.vtbmoretech.entity.event/Event.achievements">
-            <table id="achviementsTable" dataContainer="achviementsDc" width="100%" height="200px">
-                <actions>
-                    <action id="createAction" type="create"/>
-                    <action id="editAction" type="edit"/>
-                    <action id="removeAction" type="remove"/>
-                </actions>
-                <columns>
-                    <column id="name"/>
-                    <column id="description"/>
-                    <column id="dateOfReceiving"/>
-                </columns>
-            </table>
-        </groupBox>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://newsEdit.caption"
+        caption="msg://NFTEdit.caption"
         focusComponent="form">
     <data>
-        <instance id="newsDc"
-                  class="ru.wherebackend.vtbmoretech.entity.blog.News">
+        <instance id="nFTDc"
+                  class="ru.wherebackend.vtbmoretech.entity.event.NFT">
             <fetchPlan extends="_base"/>
             <loader/>
         </instance>
@@ -25,18 +25,18 @@
     <dialogMode height="600"
                 width="800"/>
     <layout spacing="true" expand="editActions">
-        <form id="form" dataContainer="newsDc">
+        <form id="form" dataContainer="nFTDc">
             <column width="350px">
-                <textField id="topicField" property="topic"/>
+                <textField id="nameField" property="name"/>
                 <textField id="descriptionField" property="description"/>
-                <entityPicker id="employeeField" property="employee">
+                <dateField id="dateOfReceivingField" property="dateOfReceiving"/>
+                <textField id="tokenField" property="token"/>
+                <entityPicker id="ownerField" property="owner">
                     <actions>
                         <action id="entityLookup" type="entity_lookup"/>
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
-                <dateField id="datePublicationField" property="datePublication"/>
-                <checkBox id="acceptField" property="accept"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

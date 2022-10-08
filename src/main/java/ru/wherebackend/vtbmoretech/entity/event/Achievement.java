@@ -1,23 +1,24 @@
 package ru.wherebackend.vtbmoretech.entity.event;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import ru.wherebackend.vtbmoretech.entity.employee.Employee;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "VTBMT_ACHVIEMENT")
-@Entity(name = "vtbmt_Achviement")
-public class Achievement {
+@Table(name = "VTBMT_NFT")
+@Entity(name = "vtbmt_NFT")
+public class NFT {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
 
-    @InstanceName
     @Column(name = "NAME")
     private String name;
 
@@ -27,12 +28,20 @@ public class Achievement {
     @Column(name = "DATE_OF_RECEIVING")
     private Date dateOfReceiving;
 
-    @Column(name = "AWARD")
-    private Double award;
+    @Column(name = "TOKEN")
+    private Long token;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "EVENT_ID")
-    private Event event;
+    @JoinColumn(name = "EMPLOYEE_ID")
+    private Employee owner;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -58,27 +67,25 @@ public class Achievement {
         this.dateOfReceiving = dateOfReceiving;
     }
 
-    public UUID getId() {
-        return id;
+    public Long getToken() {
+        return token;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setToken(Long token) {
+        this.token = token;
     }
 
-    public Double getAward() {
-        return award;
+    public Employee getOwner() {
+        return owner;
     }
 
-    public void setAward(Double award) {
-        this.award = award;
+    public void setOwner(Employee owner) {
+        this.owner = owner;
     }
 
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
+    @InstanceName
+    @DependsOnProperties({"name", "owner", "token"})
+    public String getInstanceName() {
+        return String.format("%s - %s : %s", name, owner, token);
     }
 }

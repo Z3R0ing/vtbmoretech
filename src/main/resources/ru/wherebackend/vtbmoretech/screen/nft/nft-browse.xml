@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://eventBrowse.caption"
-        focusComponent="eventsTable">
+        caption="msg://NFTBrowse.caption"
+        focusComponent="nFTsTable">
     <data readOnly="true">
-        <collection id="eventsDc"
-                    class="ru.wherebackend.vtbmoretech.entity.event.Event">
+        <collection id="nFTsDc"
+                    class="ru.wherebackend.vtbmoretech.entity.event.NFT">
             <fetchPlan extends="_base"/>
-            <loader id="eventsDl">
+            <loader id="nFTsDl">
                 <query>
-                    <![CDATA[select e from vtbmt_Event e]]>
+                    <![CDATA[select e from vtbmt_NFT e]]>
                 </query>
             </loader>
         </collection>
@@ -29,14 +29,14 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="eventsTable" spacing="true">
+    <layout expand="nFTsTable" spacing="true">
         <filter id="filter"
-                dataLoader="eventsDl">
+                dataLoader="nFTsDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="eventsTable"
+        <groupTable id="nFTsTable"
                     width="100%"
-                    dataContainer="eventsDc">
+                    dataContainer="nFTsDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -45,17 +45,16 @@
             <columns>
                 <column id="name"/>
                 <column id="description"/>
-                <column id="dateStart"/>
-                <column id="dateEnd"/>
-                <column id="codeExp"/>
-                <column id="code"/>
+                <column id="dateOfReceiving"/>
+                <column id="token"/>
+                <column id="owner"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="eventsTable.create"/>
-                <button id="editBtn" action="eventsTable.edit"/>
-                <button id="removeBtn" action="eventsTable.remove"/>
+                <button id="createBtn" action="nFTsTable.create"/>
+                <button id="editBtn" action="nFTsTable.edit"/>
+                <button id="removeBtn" action="nFTsTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

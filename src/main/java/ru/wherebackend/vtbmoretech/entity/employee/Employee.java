@@ -1,6 +1,7 @@
 package ru.wherebackend.vtbmoretech.entity.employee;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import ru.wherebackend.vtbmoretech.entity.User;
@@ -17,7 +18,6 @@ public class Employee {
     @Id
     private UUID id;
 
-    @InstanceName
     @Column(name = "NAME")
     private String name;
 
@@ -114,5 +114,11 @@ public class Employee {
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    @InstanceName
+    @DependsOnProperties({"name", "user", "department"})
+    public String getInstanceName() {
+        return String.format("%s - %s / %s", name, user, department);
     }
 }
