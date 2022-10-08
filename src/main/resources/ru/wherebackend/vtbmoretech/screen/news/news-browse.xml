@@ -5,10 +5,7 @@
     <data readOnly="true">
         <collection id="newsCollectionDc"
                     class="ru.wherebackend.vtbmoretech.entity.blog.News">
-            <fetchPlan extends="_base">
-                <property name="employee" fetchPlan="_base"/>
-                <property name="topic" fetchPlan="_base"/>
-            </fetchPlan>
+            <fetchPlan extends="_base"/>
             <loader id="newsCollectionDl">
                 <query>
                     <![CDATA[select e from vtbmt_News e]]>

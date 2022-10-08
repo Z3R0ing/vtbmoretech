@@ -5,10 +5,7 @@
     <data>
         <instance id="newsDc"
                   class="ru.wherebackend.vtbmoretech.entity.blog.News">
-            <fetchPlan extends="_base">
-                <property name="employee" fetchPlan="_base"/>
-                <property name="topic" fetchPlan="_base"/>
-            </fetchPlan>
+            <fetchPlan extends="_base"/>
             <loader/>
         </instance>
     </data>
@@ -30,7 +27,7 @@
     <layout spacing="true" expand="editActions">
         <form id="form" dataContainer="newsDc">
             <column width="350px">
-                <entityPicker id="topicField" property="topic"/>
+                <textField id="topicField" property="topic"/>
                 <textField id="descriptionField" property="description"/>
                 <entityPicker id="employeeField" property="employee">
                     <actions>

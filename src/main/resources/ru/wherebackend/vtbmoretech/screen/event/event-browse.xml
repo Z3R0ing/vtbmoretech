@@ -5,9 +5,7 @@
     <data readOnly="true">
         <collection id="eventsDc"
                     class="ru.wherebackend.vtbmoretech.entity.event.Event">
-            <fetchPlan extends="_base">
-                <property name="achievements" fetchPlan="_base"/>
-            </fetchPlan>
+            <fetchPlan extends="_base"/>
             <loader id="eventsDl">
                 <query>
                     <![CDATA[select e from vtbmt_Event e]]>
@@ -49,6 +47,8 @@
                 <column id="description"/>
                 <column id="dateStart"/>
                 <column id="dateEnd"/>
+                <column id="codeExp"/>
+                <column id="code"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
