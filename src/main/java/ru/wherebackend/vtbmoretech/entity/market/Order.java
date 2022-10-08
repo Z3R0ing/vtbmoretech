@@ -58,11 +58,11 @@ public class Order {
         this.count = count;
     }
 
-    public Boolean getClosed() {
+    public Boolean getIsClosed() {
         return isClosed;
     }
 
-    public void setClosed(Boolean closed) {
+    public void setIsClosed(Boolean closed) {
         isClosed = closed;
     }
 
