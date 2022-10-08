@@ -1,6 +1,6 @@
 package ru.wherebackend.vtbmoretech.nftapi.data;
 
-public class NftGenerateDTO {
+public class NftGenerateRequestDTO {
 
     private String toPublicKey;
     private String uri;

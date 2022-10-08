@@ -1,6 +1,6 @@
 package ru.wherebackend.vtbmoretech.nftapi.data;
 
-public class TransferDTO {
+public class TransferRequestDTO {
 
     private String fromPrivateKey;
     private String toPublicKey;
