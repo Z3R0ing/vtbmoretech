@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.wherebackend.vtbmoretech.entity.market.SaleNFT;
 import ru.wherebackend.vtbmoretech.entity.market.Thing;
+import ru.wherebackend.vtbmoretech.vtbwallet.TransfersBetweenWallets;
 import ru.wherebackend.vtbmoretech.vtbwallet.WorkingWithWallet;
 
 import java.util.List;
@@ -22,6 +23,10 @@ public class MarketController {
 
     @Autowired
     private WorkingWithWallet workingWithWallet;
+
+    @Autowired
+    private TransfersBetweenWallets transfersBetweenWallets;
+
 
     //Получение товаров
     @RequestMapping(value = "/getThings",method = RequestMethod.GET)
@@ -49,11 +54,15 @@ public class MarketController {
 
     @RequestMapping(value = "/saleNFT",method = RequestMethod.POST)
     public SaleNFT saleNFT(@RequestParam("idOfNFT") UUID idOfNFT, @RequestParam("price") Double price) {
-        return dataManager.load(SaleNFT.class)
+        SaleNFT saleNFT = dataManager.load(SaleNFT.class)
                 .id(idOfNFT)
                 .fetchPlan("_base")
                 .one();
-        //TODO
+        SaleNFT newSaleNFT = saleNFT;
+        newSaleNFT.setNft(saleNFT.getNft());
+        dataManager.save(newSaleNFT);
+        transfersBetweenWallets.transferNFT(newSaleNFT.getNft().getOwner().getPublicKey(), String.valueOf(price));
+        return newSaleNFT;
     }
 
     @RequestMapping(value = "/buyNFT",method = RequestMethod.POST)
