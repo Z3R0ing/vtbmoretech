@@ -8,7 +8,9 @@ import ru.wherebackend.vtbmoretech.entity.employee.Employee;
 import ru.wherebackend.vtbmoretech.entity.event.NFT;
 import ru.wherebackend.vtbmoretech.nftapi.data.GeneratedNftListDTO;
 import ru.wherebackend.vtbmoretech.nftapi.data.TransactionDTO;
+import ru.wherebackend.vtbmoretech.nftapi.data.TransferNftRequestDTO;
 import ru.wherebackend.vtbmoretech.utils.MappingUtils;
+import ru.wherebackend.vtbmoretech.vtbwallet.TransfersBetweenWallets;
 import ru.wherebackend.vtbmoretech.vtbwallet.WorkingWithWallet;
 
 @Service
@@ -16,14 +18,16 @@ public class NftServiceImpl implements NftService {
     private final CurrentAuthentication currentAuthentication;
     private final DataManager dataManager;
     private final WorkingWithWallet walletService;
+    private final TransfersBetweenWallets transferService;
 
     public NftServiceImpl(
             CurrentAuthentication currentAuthentication,
             DataManager dataManager,
-            WorkingWithWallet walletService) {
+            WorkingWithWallet walletService, TransfersBetweenWallets transferService) {
         this.currentAuthentication = currentAuthentication;
         this.dataManager = dataManager;
         this.walletService = walletService;
+        this.transferService = transferService;
     }
 
     @Override
@@ -54,11 +58,15 @@ public class NftServiceImpl implements NftService {
         return dataManager.save(nft);
     }
 
-    public NFT moveNFTToEmployee(Employee newEmployee, NFT nft) {
-        // TODO
-        //  1. перевести с кошелька предыдущего владельца перевести на кошелёк нового владельца
-        //  2. сменить овнера у NFT
-        throw new RuntimeException("not yet");
+    @Override
+    public NFT move(Employee to, NFT target) {
+        transferService.transferNFT(
+            new TransferNftRequestDTO(
+                target.getOwner().getPrivateKey(), to.getPublicKey(), target.getToken()
+            )
+        );
+        target.setOwner(to);
+        return dataManager.save(target);
     }
 
 }

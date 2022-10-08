@@ -1,6 +1,8 @@
 package ru.wherebackend.vtbmoretech.nftapi.data;
 
-public class TransactionDTO {
+import java.io.Serializable;
+
+public class TransactionDTO implements Serializable {
 
     private String transactionHash;
 

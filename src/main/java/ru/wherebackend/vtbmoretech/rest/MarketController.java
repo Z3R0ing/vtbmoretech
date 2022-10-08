@@ -90,7 +90,7 @@ public class MarketController {
                 .fetchPlan("for-employee")
                 .one();
         if (balance > saleNFT.getPrice()) {
-            nftService.moveNFTToEmployee(employee, saleNFT.getNft());
+            nftService.move(employee, saleNFT.getNft());
             dataManager.remove(saleNFT);
             return true;
         } else {

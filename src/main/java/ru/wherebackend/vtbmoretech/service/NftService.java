@@ -7,6 +7,6 @@ public interface NftService {
 
     NFT fromUrl(String url, String name, String description);
 
-    NFT moveNFTToEmployee(Employee newEmployee, NFT nft);
+    NFT move(Employee to, NFT target);
 
 }
