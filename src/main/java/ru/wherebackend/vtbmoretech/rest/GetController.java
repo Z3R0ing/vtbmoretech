@@ -7,104 +7,81 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.wherebackend.vtbmoretech.entity.Employee;
 import org.json.JSONObject;
+import ru.wherebackend.vtbmoretech.entity.Event;
+import ru.wherebackend.vtbmoretech.entity.News;
+import ru.wherebackend.vtbmoretech.vtbwallet.WorkingWithWallet;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @org.springframework.web.bind.annotation.RestController
-@RequestMapping("/wallet")
+@RequestMapping("/get")
 public class GetController {
 
     @Autowired
     private DataManager dataManager;
 
     @Autowired
-    private CurrentAuthentication currentAuthentication;
-
-    String baseUrl = "https://hackathon.lsp.team/hk";
-
-    //Сохранение ключей
-    private Employee getKeys() {
-        UserDetails user = currentAuthentication.getUser();
-        try {
-        Employee employee = dataManager.load(Employee.class)
-                .query("select e from vtbmt_Employee e where e.user.username = :user")
-                .parameter("user", user.getUsername())
-                .fetchPlan("for-employee")
-                .one();
-            if (employee.getPrivateKey() == null && employee.getPublicKey() == null) {
-                OkHttpClient client = new OkHttpClient().newBuilder()
-                        .build();
-                MediaType mediaType = MediaType.parse("text/plain");
-                RequestBody body = RequestBody.create(mediaType, "");
-                Request request = new Request.Builder()
-                        .url(baseUrl + "/v1/wallets/new")
-                        .method("POST", body)
-                        .build();
-                Response response = client.newCall(request).execute();
-                JSONObject jsonObject = new JSONObject(response.body().string());
-                String publicKey = jsonObject.getString("publicKey");
-                String privateKey = jsonObject.getString("privateKey");
-                response.close();
-                //Сохранение ключей
-                employee.setPublicKey(publicKey);
-                employee.setPrivateKey(privateKey);
-                dataManager.save(employee);
-            } else {
-                System.out.println("Key already save");
-            }
-            return employee;
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return null;
-    }
+    private WorkingWithWallet workingWithWallet;
 
     //Получение баланса
     @RequestMapping(value = "/getBalance",method = RequestMethod.GET)
     public String getBalance() {
-        String publicKey = Objects.requireNonNull(getKeys()).getPublicKey();
-        try {
-            OkHttpClient client = new OkHttpClient().newBuilder()
-                    .build();
-            MediaType mediaType = MediaType.parse("text/plain");
-            RequestBody body = RequestBody.create(mediaType, "");
-            Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/wallets/" + publicKey +"/balance")
-                    .method("GET", body)
-                    .build();
-            Response response = client.newCall(request).execute();
-            String responseData = response.body().string();
-            response.close();
-            return responseData;
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return null;
+        return workingWithWallet.getBalance();
     }
 
     //Получение истории
     @RequestMapping(value = "/getHistory",method = RequestMethod.GET)
     public String getHistory() {
-        String publicKey = Objects.requireNonNull(getKeys()).getPublicKey();
-        try {
-            OkHttpClient client = new OkHttpClient().newBuilder()
-                    .build();
-            MediaType mediaType = MediaType.parse("application/json");
-            RequestBody body = RequestBody.create(mediaType, "{\r\n  \"page\": 100,\r\n  \"offset\": 20,\r\n  \"sort\": \"asc\"\r\n}");
-            Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/wallets/" + publicKey + "/history")
-                    .method("POST", body)
-                    .addHeader("Content-Type", "application/json")
-                    .build();
-            Response response = client.newCall(request).execute();
-            String responseData = response.body().string();
-            response.close();
-            return responseData;
-        } catch (Exception e) {
-            e.getMessage();
-        }
-        return null;
+        return workingWithWallet.getHistory();
+    }
+
+    //Получение баланса NFT
+    @RequestMapping(value = "/getBalanceNFT",method = RequestMethod.GET)
+    public String getBalanceNFT() {
+        return workingWithWallet.getBalanceNFT();
+    }
+
+    //Получение информации по NFT
+    @RequestMapping(value = "/getBalanceNFT",method = RequestMethod.GET)
+    public String getInformationNFT(@RequestParam("tokenId") String tokenId) {
+        return workingWithWallet.getInformationNFT(tokenId);
+    }
+
+    //Получение списка сгенерированных NFT
+    @RequestMapping(value = "/getGenerateListNFT",method = RequestMethod.GET)
+    public String getGenerateListNFT(@RequestParam("transactionHash") String transactionHash) {
+        return workingWithWallet.getGenerateListNFT(transactionHash);
+    }
+
+    //Генерация NFT
+    @RequestMapping(value = "/generateNFT",method = RequestMethod.GET)
+    public String generateNFT() {
+        return workingWithWallet.generateNFT();
+    }
+
+    @RequestMapping(value = "/getInfoEmployee",method = RequestMethod.GET)
+    public Employee getEmployee(@RequestParam("userId") UUID userId) {
+        return dataManager.load(Employee.class)
+                .query("select e from vtbmt_Employee e where e.user.id = :userId")
+                .parameter("userId", userId)
+                .fetchPlan("for-employee")
+                .one();
+    }
+
+    //Получение новостей
+    @RequestMapping(value = "/getNews",method = RequestMethod.GET)
+    public List<News> getNews() {
+        return dataManager.load(News.class).all().list();
+    }
+
+    //Получение событий
+    @RequestMapping(value = "/getEvent",method = RequestMethod.GET)
+    public List<Event> getEvent() {
+        return dataManager.load(Event.class).all().list();
     }
 }
