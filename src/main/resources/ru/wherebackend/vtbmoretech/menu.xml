@@ -13,6 +13,10 @@
         <item screen="vtbmt_Topic.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.topic/topicBrowse.menu"/>
         <item screen="vtbmt_Department.browse"
               caption="msg://ru.wherebackend.vtbmoretech.screen.department/departmentBrowse.menu"/>
+        <item screen="vtbmt_Thing.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.thing/thingBrowse.menu"/>
+        <item screen="vtbmt_Order.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.order/orderBrowse.menu"/>
+        <item screen="vtbmt_Category.browse"
+              caption="msg://ru.wherebackend.vtbmoretech.screen.category/categoryBrowse.menu"/>
     </menu>
 
 </menu-config>

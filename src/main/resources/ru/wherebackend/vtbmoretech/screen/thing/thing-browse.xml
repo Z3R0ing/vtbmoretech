@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://thingBrowse.caption"
+        focusComponent="thingsTable">
+    <data readOnly="true">
+        <collection id="thingsDc"
+                    class="ru.wherebackend.vtbmoretech.entity.market.Thing">
+            <fetchPlan extends="_base">
+                <property name="owner" fetchPlan="_instance_name"/>
+                <property name="category" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="thingsDl">
+                <query>
+                    <![CDATA[select e from vtbmt_Thing e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="thingsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="thingsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="thingsTable"
+                    width="100%"
+                    dataContainer="thingsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="desc"/>
+                <column id="count"/>
+                <column id="price"/>
+                <column id="owner"/>
+                <column id="category"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="thingsTable.create"/>
+                <button id="editBtn" action="thingsTable.edit"/>
+                <button id="removeBtn" action="thingsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
