@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/get")
-public class RestController {
+public class PostController {
 
 //    @Autowired
 //    private FetchPlans fetchPlans;

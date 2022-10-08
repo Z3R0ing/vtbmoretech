@@ -1,4 +1,4 @@
-package ru.wherebackend.vtbmoretech.vtbnft;
+package ru.wherebackend.vtbmoretech.vtbwallet;
 
 import io.jmix.core.DataManager;
 import io.jmix.core.security.CurrentAuthentication;

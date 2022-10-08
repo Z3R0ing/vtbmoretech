@@ -4,19 +4,17 @@ import io.jmix.core.DataManager;
 import io.jmix.core.security.CurrentAuthentication;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.wherebackend.vtbmoretech.entity.Employee;
-import ru.wherebackend.vtbmoretech.entity.User;
 import org.json.JSONObject;
 
 import java.util.Objects;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/wallet")
-public class ApiController {
+public class GetController {
 
     @Autowired
     private DataManager dataManager;
