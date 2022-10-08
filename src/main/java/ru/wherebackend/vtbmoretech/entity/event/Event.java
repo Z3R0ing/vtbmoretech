@@ -58,11 +58,11 @@ public class Event {
         this.description = description;
     }
 
-    public List<Achievement> getAchviements() {
+    public List<Achievement> getAchievements() {
         return achievements;
     }
 
-    public void setAchviements(List<Achievement> achievements) {
+    public void setAchievements(List<Achievement> achievements) {
         this.achievements = achievements;
     }
 
