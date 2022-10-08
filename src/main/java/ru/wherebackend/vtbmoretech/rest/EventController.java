@@ -58,10 +58,14 @@ public class EventController {
 
     @RequestMapping(value = "/approve",method = RequestMethod.POST)
     public Participant approve(@RequestParam("eventId") UUID eventId, @RequestParam("code") String code) {
-        return dataManager.load(Participant.class)
+        Participant participant = dataManager.load(Participant.class)
                 .query("select e from vtbmt_Participant where e.event.id = :eventId")
                 .parameter("eventId", eventId)
                 .fetchPlan("_base")
                 .one();
+        participant.setApproved(true);
+        // TODO check code
+        // TODO participant.getUser <- NFT из пула
+        return dataManager.save(participant);
     }
 }
