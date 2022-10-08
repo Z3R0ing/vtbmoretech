@@ -16,9 +16,10 @@ public class WorkingWithWallet {
     @Autowired
     private BaseUrl baseUrl;
 
+    public String publicKey = Objects.requireNonNull(createWallet.getKeys()).getPublicKey();
+
     //Получение баланса
     public String getBalance() {
-        String publicKey = Objects.requireNonNull(createWallet.getKeys()).getPublicKey();
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -40,7 +41,6 @@ public class WorkingWithWallet {
 
     //Получение истории
     public String getHistory() {
-        String publicKey = Objects.requireNonNull(createWallet.getKeys()).getPublicKey();
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -63,7 +63,6 @@ public class WorkingWithWallet {
 
     //Генерация NFT
     public String generateNFT() {
-        String publicKey = Objects.requireNonNull(createWallet.getKeys()).getPublicKey();
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -86,7 +85,6 @@ public class WorkingWithWallet {
 
     //Получение баланса NFT
     public String getBalanceNFT() {
-        String publicKey = Objects.requireNonNull(createWallet.getKeys()).getPublicKey();
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -108,7 +106,6 @@ public class WorkingWithWallet {
 
     //Получение информации по NFT
     public String getInformationNFT(String tokenId) {
-        String publicKey = Objects.requireNonNull(createWallet.getKeys()).getPublicKey();
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -130,7 +127,6 @@ public class WorkingWithWallet {
 
     //Получение списка сгенерированных NFT
     public String getGenerateListNFT(String transactionHash) {
-        String publicKey = Objects.requireNonNull(createWallet.getKeys()).getPublicKey();
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
