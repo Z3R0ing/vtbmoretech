@@ -79,7 +79,7 @@ public class TransfersBetweenWallets {
         return "Перевод не удался";
     }
 
-    //Запроса статуса выполнения транзакции
+    //Запрос статуса выполнения транзакции
     public String transferStatus(String transactionHash) {
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
