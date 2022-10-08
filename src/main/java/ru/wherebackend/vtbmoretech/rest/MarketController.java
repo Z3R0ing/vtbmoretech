@@ -1,12 +1,14 @@
 package ru.wherebackend.vtbmoretech.rest;
 
 import io.jmix.core.DataManager;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.wherebackend.vtbmoretech.entity.market.SaleNFT;
 import ru.wherebackend.vtbmoretech.entity.market.Thing;
+import ru.wherebackend.vtbmoretech.vtbwallet.WorkingWithWallet;
 
 import java.util.List;
 import java.util.UUID;
@@ -17,6 +19,9 @@ public class MarketController {
 
     @Autowired
     private DataManager dataManager;
+
+    @Autowired
+    private WorkingWithWallet workingWithWallet;
 
     //Получение товаров
     @RequestMapping(value = "/getThings",method = RequestMethod.GET)
@@ -44,14 +49,22 @@ public class MarketController {
 
     @RequestMapping(value = "/saleNFT",method = RequestMethod.POST)
     public SaleNFT saleNFT(@RequestParam("idOfNFT") UUID idOfNFT, @RequestParam("price") Double price) {
-        // TODO
-        throw new RuntimeException("Not yet");
+        return dataManager.load(SaleNFT.class)
+                .id(idOfNFT)
+                .fetchPlan("_base")
+                .one();
+        //TODO
     }
 
     @RequestMapping(value = "/buyNFT",method = RequestMethod.POST)
     public boolean buyNFT(@RequestParam("idOfSaleNFT") UUID idOfSaleNFT) {
-        // TODO тру, если купил; фалсе, если нет деняг
-        throw new RuntimeException("Not yet");
+        SaleNFT saleNFT = dataManager.load(SaleNFT.class)
+                .id(idOfSaleNFT)
+                .fetchPlan("_base")
+                .one();
+        JSONObject jsonObject = new JSONObject(workingWithWallet.getBalance());
+        Double balance = jsonObject.getDouble("coinsAmount");
+        return saleNFT.getPrice().equals(balance);
     }
 
 }
