@@ -6,4 +6,6 @@ public interface NftService {
 
     NFT fromUrl(String url, String name, String description);
 
+    String getUri(String tokenId);
+
 }

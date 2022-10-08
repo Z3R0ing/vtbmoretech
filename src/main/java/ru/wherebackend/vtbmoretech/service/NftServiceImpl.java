@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import ru.wherebackend.vtbmoretech.entity.employee.Employee;
 import ru.wherebackend.vtbmoretech.entity.event.NFT;
 import ru.wherebackend.vtbmoretech.nftapi.data.GeneratedNftListDTO;
+import ru.wherebackend.vtbmoretech.nftapi.data.NftInfoDTO;
 import ru.wherebackend.vtbmoretech.nftapi.data.TransactionDTO;
 import ru.wherebackend.vtbmoretech.utils.MappingUtils;
 import ru.wherebackend.vtbmoretech.vtbwallet.WorkingWithWallet;
@@ -55,4 +56,10 @@ public class NftServiceImpl implements NftService {
         return dataManager.save(nft);
     }
 
+    @Override
+    public String getUri(String tokenId) {
+        String json = walletService.getInformationNFT(tokenId);
+        NftInfoDTO dto = MappingUtils.mapJson(json, NftInfoDTO.class);
+        return dto.getUri();
+    }
 }

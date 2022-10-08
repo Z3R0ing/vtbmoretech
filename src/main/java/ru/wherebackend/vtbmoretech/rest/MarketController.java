@@ -6,8 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.wherebackend.vtbmoretech.data.SaleNftDTO;
 import ru.wherebackend.vtbmoretech.entity.market.SaleNFT;
 import ru.wherebackend.vtbmoretech.entity.market.Thing;
+import ru.wherebackend.vtbmoretech.nftapi.data.NftInfoDTO;
+import ru.wherebackend.vtbmoretech.service.NftService;
+import ru.wherebackend.vtbmoretech.utils.MappingUtils;
 import ru.wherebackend.vtbmoretech.vtbwallet.TransfersBetweenWallets;
 import ru.wherebackend.vtbmoretech.vtbwallet.WorkingWithWallet;
 
@@ -26,6 +30,9 @@ public class MarketController {
 
     @Autowired
     private TransfersBetweenWallets transfersBetweenWallets;
+
+    @Autowired
+    private NftService nftService;
 
 
     //Получение товаров
@@ -53,7 +60,10 @@ public class MarketController {
     }
 
     @RequestMapping(value = "/saleNFT",method = RequestMethod.POST)
-    public SaleNFT saleNFT(@RequestParam("idOfNFT") UUID idOfNFT, @RequestParam("price") Double price) {
+    public SaleNftDTO saleNFT(
+            @RequestParam("idOfNFT") UUID idOfNFT,
+            @RequestParam("price") Double price
+    ) {
         SaleNFT saleNFT = dataManager.load(SaleNFT.class)
                 .id(idOfNFT)
                 .fetchPlan("_base")
@@ -61,8 +71,21 @@ public class MarketController {
         SaleNFT newSaleNFT = saleNFT;
         newSaleNFT.setNft(saleNFT.getNft());
         dataManager.save(newSaleNFT);
-        transfersBetweenWallets.transferNFT(newSaleNFT.getNft().getOwner().getPublicKey(), String.valueOf(price));
-        return newSaleNFT;
+        transfersBetweenWallets.transferNFT(
+                newSaleNFT
+                        .getNft()
+                        .getOwner()
+                        .getPublicKey(),
+                String.valueOf(price)
+        );
+        return new SaleNftDTO(
+            newSaleNFT.getId(),
+            newSaleNFT.getPrice(),
+            newSaleNFT.getNft().getName(),
+            newSaleNFT.getNft().getDescription(),
+            newSaleNFT.getNft().getOwner().getName(),
+            nftService.getUri(newSaleNFT.getNft().getToken().toString())
+        );
     }
 
     @RequestMapping(value = "/buyNFT",method = RequestMethod.POST)
