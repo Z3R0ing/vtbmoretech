@@ -53,8 +53,8 @@ class Marketplace extends Component {
                         <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-achivements" role="tabpanel"
                                 aria-labelledby="nav-achivements-tab">
-                                <div class="col-3">
-                                    <div class="card mb-3">
+                                <div class="row">
+                                    <div class="col-md-3 mx-0 mb-3">
                                         <div class="row row-cat">
                                             <button onclick="rotate('pointerType')" class="btn col-md-10" type="button"
                                                 data-toggle="collapse" data-target="#collapseType" aria-expanded="true"
@@ -106,48 +106,193 @@ class Marketplace extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade" id="nav-nft" role="tabpanel" aria-labelledby="nav-nft-tab">
-                                <div class="card mb-3">
-                                    <div class="row no-gutters row-achivements">
-                                        <div class="col-1">
-                                            <img src={rect} class="img-achivements" />
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Кто-нибудь, поставьте бек</h5>
-                                                <p class="card-text"><small class="text-muted">Выиграйте хакатон, заложив
-                                                    бек</small>
-                                                </p>
+                                    <div class="col-md-9">
+                                        <div class="row col-mb-9 justify-content-center">
+                                            <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                                <img class="card-img-top" src={rect} />
+                                                <div class="card-body">
+                                                    <p class="card-text">Card title</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div class="card-body">
-                                                <p class="card-text"><small class="text-muted">Дата получения 08 окт 2022 в
-                                                    11:21</small></p>
+                                            <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                                <img class="card-img-top" src={rect} />
+                                                <div class="card-body">
+                                                    <p class="card-text">Card title</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                                <img class="card-img-top" src={rect} />
+                                                <div class="card-body">
+                                                    <p class="card-text">Card title</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                                <img class="card-img-top" src={rect} />
+                                                <div class="card-body">
+                                                    <p class="card-text">Card title</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                                <img class="card-img-top" src={rect} />
+                                                <div class="card-body">
+                                                    <p class="card-text">Card title</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                                <img class="card-img-top" src={rect} />
+                                                <div class="card-body">
+                                                    <p class="card-text">Card title</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                                <img class="card-img-top" src={rect} />
+                                                <div class="card-body">
+                                                    <p class="card-text">Card title</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                                <img class="card-img-top" src={rect} />
+                                                <div class="card-body">
+                                                    <p class="card-text">Card title</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card mb-3">
-                                    <div class="row no-gutters row-achivements">
-                                        <div class="col-1">
-                                            <img src={rect} class="img-achivements" />
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-nft" role="tabpanel" aria-labelledby="nav-nft-tab">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
                                         </div>
-                                        <div class="col-7">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Кто-нибудь, поставьте бек</h5>
-                                                <p class="card-text"><small class="text-muted">Выиграйте хакатон, заложив
-                                                    бек</small>
-                                                </p>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
                                         </div>
-                                        <div class="col-4">
-                                            <div class="card-body">
-                                                <p class="card-text"><small class="text-muted">Дата получения 08 окт 2022 в 11:21</small></p>
-                                            </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 px-0 mx-3 mb-3 card">
+                                        <img class="card-img-top" src={rect} />
+                                        <div class="card-body">
+                                            <p class="card-text">Card title</p>
                                         </div>
                                     </div>
                                 </div>

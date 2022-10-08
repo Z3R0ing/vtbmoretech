@@ -183,31 +183,31 @@ class Home extends Component {
                         <h2 class="mb-0 col-md-12">Мои NFT</h2>
                         <div class="row justify-content-center my-nfts my-3">
                             <div class="col-md-2 px-0 mx-3 mb-3 card">
-                                <img class="card-img-top" src={rect}/>
+                                <img class="card-img-top" src={rect} />
                                 <div class="card-body">
                                     <p class="card-text">Card title</p>
                                 </div>
                             </div>
                             <div class="col-md-2 px-0 mx-3 mb-3 card">
-                                <img class="card-img-top" src={rect}/>
+                                <img class="card-img-top" src={rect} />
                                 <div class="card-body">
                                     <p class="card-text">Card title</p>
                                 </div>
                             </div>
                             <div class="col-md-2 px-0 mx-3 mb-3 card">
-                                <img class="card-img-top" src={rect}/>
+                                <img class="card-img-top" src={rect} />
                                 <div class="card-body">
                                     <p class="card-text">Card title</p>
                                 </div>
                             </div>
                             <div class="col-md-2 px-0 mx-3 mb-3 card">
-                                <img class="card-img-top" src={rect}/>
+                                <img class="card-img-top" src={rect} />
                                 <div class="card-body">
                                     <p class="card-text">Card title</p>
                                 </div>
                             </div>
                             <div class="col-md-2 px-0 mx-3 mb-3 card">
-                                <img class="card-img-top" src={rect}/>
+                                <img class="card-img-top" src={rect} />
                                 <div class="card-body">
                                     <p class="card-text">Card title</p>
                                 </div>
