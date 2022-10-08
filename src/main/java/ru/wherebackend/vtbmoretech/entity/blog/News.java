@@ -1,6 +1,8 @@
 package ru.wherebackend.vtbmoretech.entity.blog;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import ru.wherebackend.vtbmoretech.entity.employee.Employee;
 
@@ -83,5 +85,11 @@ public class News {
 
     public void setTopic(String topic) {
         this.topic = topic;
+    }
+
+    @InstanceName
+    @DependsOnProperties({"topic", "employee"})
+    public String getInstanceName() {
+        return String.format("%s - %s", topic, employee);
     }
 }
