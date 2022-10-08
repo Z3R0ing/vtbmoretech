@@ -6,8 +6,11 @@
         <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
         <item screen="vtbmt_Employee.browse"
               caption="msg://ru.wherebackend.vtbmoretech.screen.employee/employeeBrowse.menu"/>
+        <item screen="vtbmt_Achviement.browse"
+              caption="msg://ru.wherebackend.vtbmoretech.screen.achviement/achviementBrowse.menu"/>
         <item screen="vtbmt_Event.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.event/eventBrowse.menu"/>
         <item screen="vtbmt_News.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.news/newsBrowse.menu"/>
+        <item screen="vtbmt_Topic.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.topic/topicBrowse.menu"/>
         <item screen="vtbmt_Department.browse"
               caption="msg://ru.wherebackend.vtbmoretech.screen.department/departmentBrowse.menu"/>
         <item screen="vtbmt_Thing.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.thing/thingBrowse.menu"/>

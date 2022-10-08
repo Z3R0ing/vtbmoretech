@@ -4,11 +4,9 @@ import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @JmixEntity
@@ -27,17 +25,14 @@ public class Event {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @OneToMany(mappedBy = "event")
+    private List<Achievement> achievements;
+
     @Column(name = "DATE_START")
     private Date dateStart;
 
     @Column(name = "DATE_END")
     private Date dateEnd;
-
-    @Column(name = "CODE")
-    private String code;
-
-    @Column(name = "CODE_EXP")
-    private Date codeExp;
 
     public UUID getId() {
         return id;
@@ -63,6 +58,14 @@ public class Event {
         this.description = description;
     }
 
+    public List<Achievement> getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(List<Achievement> achievements) {
+        this.achievements = achievements;
+    }
+
     public Date getDateStart() {
         return dateStart;
     }
@@ -77,21 +80,5 @@ public class Event {
 
     public void setDateEnd(Date dateEnd) {
         this.dateEnd = dateEnd;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Date getCodeExp() {
-        return codeExp;
-    }
-
-    public void setCodeExp(Date codeExp) {
-        this.codeExp = codeExp;
     }
 }

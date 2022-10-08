@@ -12,7 +12,6 @@ import java.util.UUID;
 @Table(name = "VTBMT_EMPLOYEE")
 @Entity(name = "vtbmt_Employee")
 public class Employee {
-    @InstanceName
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
@@ -27,9 +26,6 @@ public class Employee {
 
     @Column(name = "LAST_NAME")
     private String lastName;
-
-    @Column(name = "PUBLIC_KEY")
-    private String publicKey;
 
     @Column(name = "PRIVATE_KEY")
     private String privateKey;
@@ -110,14 +106,6 @@ public class Employee {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public String getPublicKey() {
-        return publicKey;
-    }
-
-    public void setPublicKey(String publicKey) {
-        this.publicKey = publicKey;
     }
 
     public Department getDepartment() {
