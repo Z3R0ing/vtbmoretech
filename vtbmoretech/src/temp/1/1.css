@@ -18,6 +18,41 @@
     /* display: flex; */
 }
 
-header {
-    /* background-color: white; */
+.col-card-count {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.col-card-count-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-count {
+    text-align: center;
+    margin: 0;
+    font-size: 1.6vw;
+}
+
+.img-achivements {
+    width: 100%;
+    height: 100%;
+}
+
+.row-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nav-list {
+    width: 100%;
+}
+.tab-content {
+    display: flex;
+    justify-content: center;
+}
+
+.row-achivements {
+    display: flex;
+    justify-content: space-around;
 }
