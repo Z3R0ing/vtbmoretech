@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
-import logo from './image/logo.png'
+// import logo from './image/logo.png'
+const logo = "fwfweg";
 
 class Header extends Component {
 	render() {
@@ -9,7 +10,7 @@ class Header extends Component {
 			<div>
                 <header class="mb-5 mt-3">
                     <nav class="container navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand title col-1" to="">
+                        <a class="navbar-brand title col-1" to="#">
                             <img src="../image/" alt="logo" id="logo"/>
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

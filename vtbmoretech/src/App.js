@@ -19,13 +19,9 @@ class App extends Component {
 
 						<Routes>
 							<Route exact path="/" element={<Home />} />
-							{/* <Route path="/kitchen/all" element={<Kitchens />} />
-							<Route path="/recipe/all" element={<Recipes />} />
-							<Route path="/kitchen/:slug" element={<Kitchen />} />
-							<Route path="/recipe/:slug" element={<Recipe />} /> */}
 						</Routes>
 
-						<Footer />
+						{/* <Footer /> */}
                         
 					</BrowserRouter>
             </div>
