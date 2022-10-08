@@ -33,6 +33,7 @@
                 <textField id="firstNameField" property="firstName"/>
                 <textField id="lastNameField" property="lastName"/>
                 <textField id="privateKeyField" property="privateKey"/>
+                <textField id="publicKeyField" property="publicKey"/>
                 <textField id="departamentField" property="departament"/>
                 <textField id="positionField" property="position"/>
                 <entityPicker id="userField" property="user">
