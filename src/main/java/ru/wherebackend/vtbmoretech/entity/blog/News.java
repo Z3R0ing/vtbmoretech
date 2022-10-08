@@ -1,8 +1,9 @@
-package ru.wherebackend.vtbmoretech.entity;
+package ru.wherebackend.vtbmoretech.entity.blog;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import ru.wherebackend.vtbmoretech.entity.employee.Employee;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,14 +13,10 @@ import java.util.UUID;
 @Table(name = "VTBMT_NEWS")
 @Entity(name = "vtbmt_News")
 public class News {
-    @InstanceName
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
-
-    @Column(name = "TITLE")
-    private String title;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -34,20 +31,17 @@ public class News {
     @Column(name = "ACCEPT")
     private Boolean accept = false;
 
+    @InstanceName
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TOPIC_ID")
+    private Topic topic;
+
     public UUID getId() {
         return id;
     }
 
     public void setId(UUID id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getDescription() {
@@ -80,5 +74,17 @@ public class News {
 
     public void setAccept(Boolean accept) {
         this.accept = accept;
+    }
+
+    public Boolean getAccept() {
+        return accept;
+    }
+
+    public Topic getTopic() {
+        return topic;
+    }
+
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 }

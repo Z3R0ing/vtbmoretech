@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://newsEdit.caption"
+        caption="msg://thingEdit.caption"
         focusComponent="form">
     <data>
-        <instance id="newsDc"
-                  class="ru.wherebackend.vtbmoretech.entity.blog.News">
+        <instance id="thingDc"
+                  class="ru.wherebackend.vtbmoretech.entity.market.Thing">
             <fetchPlan extends="_base">
-                <property name="employee" fetchPlan="_base"/>
-                <property name="topic" fetchPlan="_base"/>
+                <property name="owner" fetchPlan="_instance_name"/>
+                <property name="category" fetchPlan="_instance_name"/>
             </fetchPlan>
             <loader/>
         </instance>
+        <collection id="categoryDc" class="ru.wherebackend.vtbmoretech.entity.market.Category"
+                    fetchPlan="_instance_name">
+            <loader>
+                <query>
+                    <![CDATA[select c from vtbmt_Category c]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -28,18 +36,19 @@
     <dialogMode height="600"
                 width="800"/>
     <layout spacing="true" expand="editActions">
-        <form id="form" dataContainer="newsDc">
+        <form id="form" dataContainer="thingDc">
             <column width="350px">
-                <entityPicker id="topicField" property="topic"/>
-                <textField id="descriptionField" property="description"/>
-                <entityPicker id="employeeField" property="employee">
+                <textField id="nameField" property="name"/>
+                <textField id="descField" property="desc"/>
+                <textField id="countField" property="count"/>
+                <textField id="priceField" property="price"/>
+                <entityPicker id="ownerField" property="owner">
                     <actions>
                         <action id="entityLookup" type="entity_lookup"/>
                         <action id="entityClear" type="entity_clear"/>
                     </actions>
                 </entityPicker>
-                <dateField id="datePublicationField" property="datePublication"/>
-                <checkBox id="acceptField" property="accept"/>
+                <entityPicker id="categoryField" property="category"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

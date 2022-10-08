@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://eventBrowse.caption"
-        focusComponent="eventsTable">
+        caption="msg://categoryBrowse.caption"
+        focusComponent="categoriesTable">
     <data readOnly="true">
-        <collection id="eventsDc"
-                    class="ru.wherebackend.vtbmoretech.entity.event.Event">
-            <fetchPlan extends="_base">
-                <property name="achievements" fetchPlan="_base"/>
-            </fetchPlan>
-            <loader id="eventsDl">
+        <collection id="categoriesDc"
+                    class="ru.wherebackend.vtbmoretech.entity.market.Category">
+            <fetchPlan extends="_base"/>
+            <loader id="categoriesDl">
                 <query>
-                    <![CDATA[select e from vtbmt_Event e]]>
+                    <![CDATA[select e from vtbmt_Category e]]>
                 </query>
             </loader>
         </collection>
@@ -31,14 +29,14 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="eventsTable" spacing="true">
+    <layout expand="categoriesTable" spacing="true">
         <filter id="filter"
-                dataLoader="eventsDl">
+                dataLoader="categoriesDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="eventsTable"
+        <groupTable id="categoriesTable"
                     width="100%"
-                    dataContainer="eventsDc">
+                    dataContainer="categoriesDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -46,16 +44,13 @@
             </actions>
             <columns>
                 <column id="name"/>
-                <column id="description"/>
-                <column id="dateStart"/>
-                <column id="dateEnd"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="eventsTable.create"/>
-                <button id="editBtn" action="eventsTable.edit"/>
-                <button id="removeBtn" action="eventsTable.remove"/>
+                <button id="createBtn" action="categoriesTable.create"/>
+                <button id="editBtn" action="categoriesTable.edit"/>
+                <button id="removeBtn" action="categoriesTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

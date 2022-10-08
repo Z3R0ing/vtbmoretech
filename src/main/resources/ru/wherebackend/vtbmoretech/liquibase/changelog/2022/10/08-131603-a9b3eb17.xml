@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="vtbmt">
+        <createTable tableName="VTBMT_CATEGORY">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_CATEGORY"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="vtbmt">
+        <createTable tableName="VTBMT_DEPARTMENT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_DEPARTMENT"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="vtbmt">
+        <createTable tableName="VTBMT_ORDER">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_ORDER"/>
+            </column>
+            <column name="COUNT_" type="INT"/>
+            <column name="IS_CLOSED" type="BOOLEAN"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="THING_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="vtbmt">
+        <createTable tableName="VTBMT_THING">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_THING"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="DESC" type="VARCHAR(255)"/>
+            <column name="COUNT_" type="INT"/>
+            <column name="Price" type="DOUBLE"/>
+            <column name="EMPLOYEE_ID" type="UUID"/>
+            <column name="CATEGORY_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="vtbmt">
+        <createTable tableName="VTBMT_TOPIC">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_TOPIC"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="AWARD" type="INT"/>
+            <column name="DEPARTMENT_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="vtbmt">
+        <addColumn tableName="VTBMT_ACHVIEMENT">
+            <column name="AWARD" type="DOUBLE"/>
+            <column name="EVENT_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="7" author="vtbmt">
+        <addColumn tableName="VTBMT_EMPLOYEE">
+            <column name="DEPARTMENT_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="8" author="vtbmt">
+        <addColumn tableName="VTBMT_NEWS">
+            <column name="TOPIC_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="9" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="DEPARTMENT_ID" baseTableName="VTBMT_EMPLOYEE"
+                                 constraintName="FK_VTBMTEMPLOYEE_ON_DEPARTMENT" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_DEPARTMENT"/>
+    </changeSet>
+    <changeSet id="10" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="EVENT_ID" baseTableName="VTBMT_ACHVIEMENT"
+                                 constraintName="FK_VTBMT_ACHVIEMENT_ON_EVENT" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_EVENT"/>
+    </changeSet>
+    <changeSet id="11" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="TOPIC_ID" baseTableName="VTBMT_NEWS"
+                                 constraintName="FK_VTBMT_NEWS_ON_TOPIC" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_TOPIC"/>
+    </changeSet>
+    <changeSet id="12" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="THING_ID" baseTableName="VTBMT_ORDER"
+                                 constraintName="FK_VTBMT_ORDER_ON_THING" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_THING"/>
+    </changeSet>
+    <changeSet id="13" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="CATEGORY_ID" baseTableName="VTBMT_THING"
+                                 constraintName="FK_VTBMT_THING_ON_CATEGORY" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_CATEGORY"/>
+    </changeSet>
+    <changeSet id="14" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="VTBMT_THING"
+                                 constraintName="FK_VTBMT_THING_ON_EMPLOYEE" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_EMPLOYEE"/>
+    </changeSet>
+    <changeSet id="15" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="DEPARTMENT_ID" baseTableName="VTBMT_TOPIC"
+                                 constraintName="FK_VTBMT_TOPIC_ON_DEPARTMENT" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_DEPARTMENT"/>
+    </changeSet>
+    <changeSet id="16" author="vtbmt">
+        <dropForeignKeyConstraint baseTableName="VTBMT_EVENT_ACHVIEMENTS" constraintName="FK_VTBEVEACH_ON_ACHVIEMENT"/>
+    </changeSet>
+    <changeSet id="17" author="vtbmt">
+        <dropForeignKeyConstraint baseTableName="VTBMT_EVENT_ACHVIEMENTS" constraintName="FK_VTBEVEACH_ON_EVENT"/>
+    </changeSet>
+    <changeSet id="18" author="vtbmt">
+        <dropTable cascadeConstraints="true" tableName="VTBMT_EVENT_ACHVIEMENTS"/>
+    </changeSet>
+    <changeSet id="19" author="vtbmt">
+        <dropColumn columnName="TITLE" tableName="VTBMT_NEWS"/>
+    </changeSet>
+</databaseChangeLog>

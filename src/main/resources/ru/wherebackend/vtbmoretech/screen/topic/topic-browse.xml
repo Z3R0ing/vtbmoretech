@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://eventBrowse.caption"
-        focusComponent="eventsTable">
+        caption="msg://topicBrowse.caption"
+        focusComponent="topicsTable">
     <data readOnly="true">
-        <collection id="eventsDc"
-                    class="ru.wherebackend.vtbmoretech.entity.event.Event">
+        <collection id="topicsDc"
+                    class="ru.wherebackend.vtbmoretech.entity.blog.Topic">
             <fetchPlan extends="_base">
-                <property name="achievements" fetchPlan="_base"/>
+                <property name="department" fetchPlan="_instance_name"/>
             </fetchPlan>
-            <loader id="eventsDl">
+            <loader id="topicsDl">
                 <query>
-                    <![CDATA[select e from vtbmt_Event e]]>
+                    <![CDATA[select e from vtbmt_Topic e]]>
                 </query>
             </loader>
         </collection>
@@ -31,14 +31,14 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="eventsTable" spacing="true">
+    <layout expand="topicsTable" spacing="true">
         <filter id="filter"
-                dataLoader="eventsDl">
+                dataLoader="topicsDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="eventsTable"
+        <groupTable id="topicsTable"
                     width="100%"
-                    dataContainer="eventsDc">
+                    dataContainer="topicsDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -46,16 +46,15 @@
             </actions>
             <columns>
                 <column id="name"/>
-                <column id="description"/>
-                <column id="dateStart"/>
-                <column id="dateEnd"/>
+                <column id="award"/>
+                <column id="department"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="eventsTable.create"/>
-                <button id="editBtn" action="eventsTable.edit"/>
-                <button id="removeBtn" action="eventsTable.remove"/>
+                <button id="createBtn" action="topicsTable.create"/>
+                <button id="editBtn" action="topicsTable.edit"/>
+                <button id="removeBtn" action="topicsTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

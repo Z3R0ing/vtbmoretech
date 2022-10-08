@@ -1,5 +1,5 @@
 <fetchPlans xmlns="http://jmix.io/schema/core/fetch-plans">
-    <fetchPlan class="ru.wherebackend.vtbmoretech.entity.Employee"
+    <fetchPlan class="ru.wherebackend.vtbmoretech.entity.employee.Employee"
                name="for-employee"
                extends="_base">
         <property name="user" fetchPlan="_base"/>
