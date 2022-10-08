@@ -19,7 +19,7 @@ public class News {
     @Id
     private UUID id;
 
-    @Column(name = "TOPIC")
+    @Column(name = "TOPIC_NAME")
     private String topic;
 
     @Column(name = "DESCRIPTION")

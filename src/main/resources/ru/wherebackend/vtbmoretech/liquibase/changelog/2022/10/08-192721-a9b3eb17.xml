@@ -56,9 +56,6 @@
     <changeSet id="9" author="vtbmt">
         <dropTable cascadeConstraints="true" tableName="VTBMT_ACHVIEMENT"/>
     </changeSet>
-    <changeSet id="10" author="vtbmt">
-        <dropTable cascadeConstraints="true" tableName="VTBMT_TOPIC"/>
-    </changeSet>
     <changeSet id="11" author="vtbmt">
         <dropColumn columnName="TOPIC_ID" tableName="VTBMT_NEWS"/>
     </changeSet>

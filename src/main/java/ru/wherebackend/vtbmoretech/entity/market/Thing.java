@@ -97,6 +97,6 @@ public class Thing {
     @InstanceName
     @DependsOnProperties({"name", "owner", "category"})
     public String getInstanceName() {
-        return String.format("%s - %s / %s", name, owner, category);
+        return String.format("%s - %s / %s: %s (%s)", name, owner, category, price, count);
     }
 }
