@@ -54,4 +54,11 @@ public class NftServiceImpl implements NftService {
         return dataManager.save(nft);
     }
 
+    public NFT moveNFTToEmployee(Employee newEmployee, NFT nft) {
+        // TODO
+        //  1. перевести с кошелька предыдущего владельца перевести на кошелёк нового владельца
+        //  2. сменить овнера у NFT
+        throw new RuntimeException("not yet");
+    }
+
 }

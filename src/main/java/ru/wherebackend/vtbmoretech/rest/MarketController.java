@@ -1,13 +1,18 @@
 package ru.wherebackend.vtbmoretech.rest;
 
 import io.jmix.core.DataManager;
+import io.jmix.core.security.CurrentAuthentication;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.wherebackend.vtbmoretech.entity.employee.Employee;
+import ru.wherebackend.vtbmoretech.entity.event.NFT;
 import ru.wherebackend.vtbmoretech.entity.market.SaleNFT;
 import ru.wherebackend.vtbmoretech.entity.market.Thing;
+import ru.wherebackend.vtbmoretech.service.NftService;
 import ru.wherebackend.vtbmoretech.vtbwallet.TransfersBetweenWallets;
 import ru.wherebackend.vtbmoretech.vtbwallet.WorkingWithWallet;
 
@@ -26,6 +31,12 @@ public class MarketController {
 
     @Autowired
     private TransfersBetweenWallets transfersBetweenWallets;
+
+    @Autowired
+    private CurrentAuthentication currentAuthentication;
+
+    @Autowired
+    private NftService nftService;
 
 
     //Получение товаров
@@ -54,15 +65,14 @@ public class MarketController {
 
     @RequestMapping(value = "/saleNFT",method = RequestMethod.POST)
     public SaleNFT saleNFT(@RequestParam("idOfNFT") UUID idOfNFT, @RequestParam("price") Double price) {
-        SaleNFT saleNFT = dataManager.load(SaleNFT.class)
+        NFT nft = dataManager.load(NFT.class)
                 .id(idOfNFT)
                 .fetchPlan("_base")
                 .one();
-        SaleNFT newSaleNFT = saleNFT;
-        newSaleNFT.setNft(saleNFT.getNft());
-        dataManager.save(newSaleNFT);
-        transfersBetweenWallets.transferNFT(newSaleNFT.getNft().getOwner().getPublicKey(), String.valueOf(price));
-        return newSaleNFT;
+        SaleNFT newSaleNFT = dataManager.create(SaleNFT.class);
+        newSaleNFT.setNft(nft);
+        newSaleNFT.setPrice(price);
+        return dataManager.save(newSaleNFT);
     }
 
     @RequestMapping(value = "/buyNFT",method = RequestMethod.POST)
@@ -72,8 +82,20 @@ public class MarketController {
                 .fetchPlan("_base")
                 .one();
         JSONObject jsonObject = new JSONObject(workingWithWallet.getBalance());
-        Double balance = jsonObject.getDouble("coinsAmount");
-        return saleNFT.getPrice().equals(balance);
+        double balance = jsonObject.getDouble("coinsAmount");
+        UserDetails user = currentAuthentication.getUser();
+        Employee employee = dataManager.load(Employee.class)
+                .query("select e from vtbmt_Employee e where e.user.username = :user")
+                .parameter("user", user.getUsername())
+                .fetchPlan("for-employee")
+                .one();
+        if (balance > saleNFT.getPrice()) {
+            nftService.moveNFTToEmployee(employee, saleNFT.getNft());
+            dataManager.remove(saleNFT);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
