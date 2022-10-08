@@ -1,8 +1,6 @@
 package ru.wherebackend.vtbmoretech.screen.rest;
 
 import io.jmix.core.DataManager;
-import io.jmix.core.FetchPlan;
-import io.jmix.core.FetchPlans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,7 +42,7 @@ public class RestController {
         return dataManager.load(News.class).all().list();
     }
 
-    //Получение событий
+    //Получение событий - НЕ РАБОТАЕТ
     @RequestMapping(value = "/getEvent",method = RequestMethod.GET)
     public List<Event> getEvent() {
         return dataManager.load(Event.class).all().list();
