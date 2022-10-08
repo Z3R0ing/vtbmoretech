@@ -1,9 +1,9 @@
 package ru.wherebackend.vtbmoretech.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jmix.core.DataManager;
 import io.jmix.core.security.CurrentAuthentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 import ru.wherebackend.vtbmoretech.entity.employee.Employee;
 import ru.wherebackend.vtbmoretech.entity.event.NFT;
 import ru.wherebackend.vtbmoretech.nftapi.data.GeneratedNftListDTO;
@@ -11,8 +11,7 @@ import ru.wherebackend.vtbmoretech.nftapi.data.TransactionDTO;
 import ru.wherebackend.vtbmoretech.utils.MappingUtils;
 import ru.wherebackend.vtbmoretech.vtbwallet.WorkingWithWallet;
 
-import javax.persistence.EntityManager;
-
+@Service
 public class NftServiceImpl implements NftService {
     private final CurrentAuthentication currentAuthentication;
     private final DataManager dataManager;
