@@ -4,7 +4,7 @@
         focusComponent="form">
     <data>
         <instance id="achviementDc"
-                  class="ru.wherebackend.vtbmoretech.entity.event.Achviement">
+                  class="ru.wherebackend.vtbmoretech.entity.event.Achievement">
             <fetchPlan extends="_base"/>
             <loader/>
         </instance>

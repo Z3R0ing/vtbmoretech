@@ -14,7 +14,7 @@ import java.util.UUID;
 @JmixEntity
 @Table(name = "VTBMT_ACHVIEMENT")
 @Entity(name = "vtbmt_Achviement")
-public class Achviement {
+public class Achievement {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id

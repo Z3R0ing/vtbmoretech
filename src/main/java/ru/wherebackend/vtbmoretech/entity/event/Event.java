@@ -27,7 +27,7 @@ public class Event {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "ACHVIEMENT_ID")
-    private List<Achviement> achviements;
+    private List<Achievement> achievements;
 
     @Column(name = "DATE_START")
     private Date dateStart;
@@ -59,12 +59,12 @@ public class Event {
         this.description = description;
     }
 
-    public List<Achviement> getAchviements() {
-        return achviements;
+    public List<Achievement> getAchviements() {
+        return achievements;
     }
 
-    public void setAchviements(List<Achviement> achviements) {
-        this.achviements = achviements;
+    public void setAchviements(List<Achievement> achievements) {
+        this.achievements = achievements;
     }
 
     public Date getDateStart() {

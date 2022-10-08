@@ -6,7 +6,7 @@
         <collection id="eventsDc"
                     class="ru.wherebackend.vtbmoretech.entity.event.Event">
             <fetchPlan extends="_base">
-                <property name="achviements" fetchPlan="_base"/>
+                <property name="achievements" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="eventsDl">
                 <query>

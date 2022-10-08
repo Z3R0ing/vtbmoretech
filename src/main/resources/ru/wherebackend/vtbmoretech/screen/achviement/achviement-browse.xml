@@ -4,7 +4,7 @@
         focusComponent="achviementsTable">
     <data readOnly="true">
         <collection id="achviementsDc"
-                    class="ru.wherebackend.vtbmoretech.entity.event.Achviement">
+                    class="ru.wherebackend.vtbmoretech.entity.event.Achievement">
             <fetchPlan extends="_base"/>
             <loader id="achviementsDl">
                 <query>
