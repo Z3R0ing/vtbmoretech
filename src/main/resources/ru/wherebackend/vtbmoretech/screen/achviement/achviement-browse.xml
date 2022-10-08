@@ -46,6 +46,7 @@
                 <column id="name"/>
                 <column id="description"/>
                 <column id="dateOfReceiving"/>
+                <column id="award"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"

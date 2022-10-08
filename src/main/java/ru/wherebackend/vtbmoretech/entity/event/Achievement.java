@@ -31,7 +31,7 @@ public class Achievement {
     private Date dateOfReceiving;
 
     @Column(name = "AWARD")
-    private Integer award;
+    private Double award;
 
     public String getName() {
         return name;
@@ -65,11 +65,11 @@ public class Achievement {
         this.id = id;
     }
 
-    public Integer getAward() {
+    public Double getAward() {
         return award;
     }
 
-    public void setAward(Integer award) {
+    public void setAward(Double award) {
         this.award = award;
     }
 }

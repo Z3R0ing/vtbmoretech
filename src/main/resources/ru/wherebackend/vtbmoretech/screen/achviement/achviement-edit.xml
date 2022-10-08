@@ -30,6 +30,7 @@
                 <textField id="nameField" property="name"/>
                 <textField id="descriptionField" property="description"/>
                 <dateField id="dateOfReceivingField" property="dateOfReceiving"/>
+                <textField id="awardField" property="award"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">
