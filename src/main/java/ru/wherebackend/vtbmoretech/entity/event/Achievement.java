@@ -1,24 +1,23 @@
 package ru.wherebackend.vtbmoretech.entity.event;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
-import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
-import ru.wherebackend.vtbmoretech.entity.employee.Employee;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "VTBMT_NFT")
-@Entity(name = "vtbmt_NFT")
-public class NFT {
+@Table(name = "VTBMT_ACHVIEMENT")
+@Entity(name = "vtbmt_Achviement")
+public class Achievement {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
 
+    @InstanceName
     @Column(name = "NAME")
     private String name;
 
@@ -28,20 +27,12 @@ public class NFT {
     @Column(name = "DATE_OF_RECEIVING")
     private Date dateOfReceiving;
 
-    @Column(name = "TOKEN")
-    private Long token;
+    @Column(name = "AWARD")
+    private Double award;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "EMPLOYEE_ID")
-    private Employee owner;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    @JoinColumn(name = "EVENT_ID")
+    private Event event;
 
     public String getName() {
         return name;
@@ -67,25 +58,27 @@ public class NFT {
         this.dateOfReceiving = dateOfReceiving;
     }
 
-    public Long getToken() {
-        return token;
+    public UUID getId() {
+        return id;
     }
 
-    public void setToken(Long token) {
-        this.token = token;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
-    public Employee getOwner() {
-        return owner;
+    public Double getAward() {
+        return award;
     }
 
-    public void setOwner(Employee owner) {
-        this.owner = owner;
+    public void setAward(Double award) {
+        this.award = award;
     }
 
-    @InstanceName
-    @DependsOnProperties({"name", "owner"})
-    public String getInstanceName() {
-        return String.format("%s - %s", name, owner);
+    public Event getEvent() {
+        return event;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
     }
 }

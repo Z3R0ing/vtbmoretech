@@ -1,7 +1,6 @@
 package ru.wherebackend.vtbmoretech.entity.blog;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
-import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import ru.wherebackend.vtbmoretech.entity.employee.Employee;
@@ -19,9 +18,6 @@ public class News {
     @Id
     private UUID id;
 
-    @Column(name = "TOPIC_NAME")
-    private String topic;
-
     @Column(name = "DESCRIPTION")
     private String description;
 
@@ -34,6 +30,11 @@ public class News {
 
     @Column(name = "ACCEPT")
     private Boolean accept = false;
+
+    @InstanceName
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "TOPIC_ID")
+    private Topic topic;
 
     public UUID getId() {
         return id;
@@ -79,17 +80,11 @@ public class News {
         return accept;
     }
 
-    public String getTopic() {
+    public Topic getTopic() {
         return topic;
     }
 
-    public void setTopic(String topic) {
+    public void setTopic(Topic topic) {
         this.topic = topic;
-    }
-
-    @InstanceName
-    @DependsOnProperties({"topic", "employee"})
-    public String getInstanceName() {
-        return String.format("%s - %s", topic, employee);
     }
 }
