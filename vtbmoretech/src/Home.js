@@ -7,12 +7,7 @@ import './css/pages/lk.css'
 import menu from './image/menu.svg'
 import rect from './image/rect.svg'
 
-const sign_out = "fwfweg";
-const time = "fwfweg";
-const talk = "fwfweg";
-const offhelper_image = "fwfweg";
-
-const recipesService = new Service();
+const service = new Service();
 
 class Home extends Component {
 
@@ -25,7 +20,7 @@ class Home extends Component {
 
 
     async componentDidMount() {
-        // await recipesService.getKitchensHome()
+        // await service.getKitchensHome()
         //     .then(response => {
         //         this.setState({ kitchens: response });
         //         console.log(response);

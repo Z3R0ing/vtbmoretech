@@ -20,10 +20,10 @@ class Header extends Component {
                         </button>
                         <div class="collapse navbar-collapse justify-content-md-center" id="navbarNavAltMarkup">
                             <div class="navbar-nav header-link">
-                                <a class="nav-item nav-link mr-4" to="/">Главная</a>
-                                <a class="nav-item nav-link mr-4" to="">Новости</a>
-                                <a class="nav-item nav-link mr-4" to="">Потратить</a>
-                                <a class="nav-item nav-link mr-4" to="">Заработать </a>
+                                <Link class="nav-item nav-link mr-4" to="/">Главная</Link>
+                                <Link class="nav-item nav-link mr-4" to="/">Новости</Link>
+                                <Link class="nav-item nav-link mr-4" to="/mp">Потратить</Link>
+                                <Link class="nav-item nav-link mr-4" to="/">Заработать </Link>
                             </div>
                         </div>
                         <div class="sign">
@@ -39,22 +39,3 @@ class Header extends Component {
 }
 
 export default Header;
-
-{/* <header>
-    <nav className="container navbar navbar-expand-lg navbar-light ">
-        <h1 className="navbar-brand title" to="">
-            <img src={logo} alt="logo" />
-            RecipeForAll
-        </h1>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse justify-content-md-center" id="navbarNavAltMarkup">
-            <div className="navbar-nav header-link">
-                <Link className="nav-item nav-link" to="/">Главная</Link>
-                <Link className="nav-item nav-link" to="/kitchen/all">Кухни</Link>
-                <Link className="nav-item nav-link" to="/recipe/all">Рецепты</Link>
-            </div>
-        </div>
-    </nav>
-</header> */}
