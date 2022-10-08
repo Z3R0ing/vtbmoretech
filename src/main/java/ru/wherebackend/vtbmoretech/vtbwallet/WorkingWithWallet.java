@@ -3,6 +3,7 @@ package ru.wherebackend.vtbmoretech.vtbwallet;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.wherebackend.vtbmoretech.exception.CouldNotCreateNftException;
 import ru.wherebackend.vtbmoretech.url.BaseUrl;
 
 import java.util.Objects;
@@ -82,6 +83,28 @@ public class WorkingWithWallet {
             e.getMessage();
         }
         return null;
+    }
+
+    public String generateNFT(String url) {
+        String publicKey = Objects.requireNonNull(createWallet.getKeys()).getPublicKey();
+        try {
+            OkHttpClient client = new OkHttpClient().newBuilder()
+                    .build();
+            MediaType mediaType = MediaType.parse("application/json");
+            RequestBody body = RequestBody.create(mediaType, "{\r\n  \"toPublicKey\": \"" + publicKey + "\",\r\n  \"uri\": \"" + url + "\",\r\n  \"nftCount\": 1\r\n}");
+            Request request = new Request.Builder()
+                    .url(baseUrl.url + "/v1/nft/generate")
+                    .method("POST", body)
+                    .addHeader("Content-Type", "application/json")
+                    .build();
+            Response response = client.newCall(request).execute();
+            String responseData = response.body().string();
+            response.close();
+            return responseData;
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        throw new CouldNotCreateNftException();
     }
 
     //Получение баланса NFT
