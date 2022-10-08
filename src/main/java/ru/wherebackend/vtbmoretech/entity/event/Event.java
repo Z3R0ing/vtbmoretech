@@ -25,8 +25,7 @@ public class Event {
     @Column(name = "DESCRIPTION")
     private String description;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ACHVIEMENT_ID")
+    @OneToMany(mappedBy = "event")
     private List<Achievement> achievements;
 
     @Column(name = "DATE_START")
