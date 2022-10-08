@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
         caption="msg://eventBrowse.caption"
         focusComponent="eventsTable">
     <data readOnly="true">
         <collection id="eventsDc"
-                    class="ru.wherebackend.vtbmoretech.entity.Event">
+                    class="ru.wherebackend.vtbmoretech.entity.event.Event">
             <fetchPlan extends="_base">
                 <property name="achviements" fetchPlan="_base"/>
             </fetchPlan>

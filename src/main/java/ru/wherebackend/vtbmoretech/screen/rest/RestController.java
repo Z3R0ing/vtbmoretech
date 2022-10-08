@@ -1,15 +1,13 @@
 package ru.wherebackend.vtbmoretech.screen.rest;
 
 import io.jmix.core.DataManager;
-import io.jmix.core.FetchPlan;
-import io.jmix.core.FetchPlans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.wherebackend.vtbmoretech.entity.Employee;
-import ru.wherebackend.vtbmoretech.entity.Event;
-import ru.wherebackend.vtbmoretech.entity.News;
+import ru.wherebackend.vtbmoretech.entity.blog.News;
+import ru.wherebackend.vtbmoretech.entity.employee.Employee;
+import ru.wherebackend.vtbmoretech.entity.event.Event;
 
 import java.util.List;
 import java.util.UUID;

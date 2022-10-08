@@ -4,7 +4,7 @@
         focusComponent="form">
     <data>
         <instance id="newsDc"
-                  class="ru.wherebackend.vtbmoretech.entity.News">
+                  class="ru.wherebackend.vtbmoretech.entity.blog.News">
             <fetchPlan extends="_base">
                 <property name="employee" fetchPlan="_base"/>
             </fetchPlan>

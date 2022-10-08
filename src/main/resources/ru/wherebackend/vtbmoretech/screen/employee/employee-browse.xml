@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
         caption="msg://employeeBrowse.caption"
         focusComponent="employeesTable">
     <data readOnly="true">
         <collection id="employeesDc"
-                    class="ru.wherebackend.vtbmoretech.entity.Employee">
+                    class="ru.wherebackend.vtbmoretech.entity.employee.Employee">
             <fetchPlan extends="_base">
                 <property name="user" fetchPlan="_base"/>
             </fetchPlan>

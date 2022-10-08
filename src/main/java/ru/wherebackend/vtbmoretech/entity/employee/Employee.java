@@ -1,8 +1,9 @@
-package ru.wherebackend.vtbmoretech.entity;
+package ru.wherebackend.vtbmoretech.entity.employee;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import ru.wherebackend.vtbmoretech.entity.User;
 
 import javax.persistence.*;
 import java.util.UUID;

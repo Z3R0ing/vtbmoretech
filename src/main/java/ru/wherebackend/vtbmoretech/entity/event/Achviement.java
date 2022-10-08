@@ -1,4 +1,4 @@
-package ru.wherebackend.vtbmoretech.entity;
+package ru.wherebackend.vtbmoretech.entity.event;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.InstanceName;
