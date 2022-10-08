@@ -1,6 +1,7 @@
 package ru.wherebackend.vtbmoretech.vtbwallet;
 
 import okhttp3.*;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.wherebackend.vtbmoretech.url.BaseUrl;
@@ -19,7 +20,7 @@ public class WorkingWithWallet {
     public String publicKey = Objects.requireNonNull(createWallet.getKeys()).getPublicKey();
 
     //Получение баланса
-    public String getBalance() {
+    public JSONObject getBalance() {
         try {
             OkHttpClient client = new OkHttpClient().newBuilder()
                     .build();
@@ -31,8 +32,15 @@ public class WorkingWithWallet {
                     .build();
             Response response = client.newCall(request).execute();
             String responseData = response.body().string();
+            JSONObject jsonObject = new JSONObject(responseData);
+            jsonObject.getString("maticAmount");
+            jsonObject.getString("coinsAmount");
+
+            JSONObject jsonObjectResult = new JSONObject();
+            jsonObjectResult.put("maticAmount", jsonObject.getString("maticAmount"));
+            jsonObjectResult.put("coinsAmount", jsonObject.getString("coinsAmount"));
             response.close();
-            return responseData;
+            return jsonObjectResult;
         } catch (Exception e) {
             e.getMessage();
         }

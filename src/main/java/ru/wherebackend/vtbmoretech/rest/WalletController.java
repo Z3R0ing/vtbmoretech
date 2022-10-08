@@ -1,5 +1,6 @@
 package ru.wherebackend.vtbmoretech.rest;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +19,7 @@ public class WalletController {
 
     //Получение баланса
     @RequestMapping(value = "/getBalance",method = RequestMethod.GET)
-    public String getBalance() {
+    public JSONObject getBalance() {
         return workingWithWallet.getBalance();
     }
 
