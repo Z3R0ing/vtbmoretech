@@ -35,7 +35,7 @@ public class WalletController {
     }
 
     //Получение информации по NFT
-    @RequestMapping(value = "/getBalanceNFT",method = RequestMethod.GET)
+    @RequestMapping(value = "/getInformationNFT",method = RequestMethod.GET)
     public String getInformationNFT(@RequestParam("tokenId") String tokenId) {
         return workingWithWallet.getInformationNFT(tokenId);
     }
