@@ -10,6 +10,9 @@
               caption="msg://ru.wherebackend.vtbmoretech.screen.achviement/achviementBrowse.menu"/>
         <item screen="vtbmt_Event.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.event/eventBrowse.menu"/>
         <item screen="vtbmt_News.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.news/newsBrowse.menu"/>
+        <item screen="vtbmt_Topic.browse" caption="msg://ru.wherebackend.vtbmoretech.screen.topic/topicBrowse.menu"/>
+        <item screen="vtbmt_Department.browse"
+              caption="msg://ru.wherebackend.vtbmoretech.screen.department/departmentBrowse.menu"/>
     </menu>
 
 </menu-config>

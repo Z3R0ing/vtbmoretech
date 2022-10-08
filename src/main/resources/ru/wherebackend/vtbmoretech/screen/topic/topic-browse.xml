@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://newsBrowse.caption"
-        focusComponent="newsTable">
+        caption="msg://topicBrowse.caption"
+        focusComponent="topicsTable">
     <data readOnly="true">
-        <collection id="newsCollectionDc"
-                    class="ru.wherebackend.vtbmoretech.entity.blog.News">
+        <collection id="topicsDc"
+                    class="ru.wherebackend.vtbmoretech.entity.blog.Topic">
             <fetchPlan extends="_base">
-                <property name="employee" fetchPlan="_base"/>
-                <property name="topic" fetchPlan="_base"/>
+                <property name="department" fetchPlan="_instance_name"/>
             </fetchPlan>
-            <loader id="newsCollectionDl">
+            <loader id="topicsDl">
                 <query>
-                    <![CDATA[select e from vtbmt_News e]]>
+                    <![CDATA[select e from vtbmt_Topic e]]>
                 </query>
             </loader>
         </collection>
@@ -32,34 +31,32 @@
     </actions>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="newsTable" spacing="true">
+    <layout expand="topicsTable" spacing="true">
         <filter id="filter"
-                dataLoader="newsCollectionDl">
+                dataLoader="topicsDl">
             <properties include=".*"/>
         </filter>
-        <table id="newsTable"
-               width="100%"
-               dataContainer="newsCollectionDc">
+        <groupTable id="topicsTable"
+                    width="100%"
+                    dataContainer="topicsDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="topic"/>
-                <column id="description"/>
-                <column id="employee"/>
-                <column id="datePublication"/>
-                <column id="accept"/>
+                <column id="name"/>
+                <column id="award"/>
+                <column id="department"/>
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="newsTable.create"/>
-                <button id="editBtn" action="newsTable.edit"/>
-                <button id="removeBtn" action="newsTable.remove"/>
+                <button id="createBtn" action="topicsTable.create"/>
+                <button id="editBtn" action="topicsTable.edit"/>
+                <button id="removeBtn" action="topicsTable.remove"/>
             </buttonsPanel>
-        </table>
+        </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>

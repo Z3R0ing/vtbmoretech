@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <window xmlns="http://jmix.io/schema/ui/window"
-        caption="msg://newsEdit.caption"
+        caption="msg://departmentEdit.caption"
         focusComponent="form">
     <data>
-        <instance id="newsDc"
-                  class="ru.wherebackend.vtbmoretech.entity.blog.News">
-            <fetchPlan extends="_base">
-                <property name="employee" fetchPlan="_base"/>
-                <property name="topic" fetchPlan="_base"/>
-            </fetchPlan>
+        <instance id="departmentDc"
+                  class="ru.wherebackend.vtbmoretech.entity.employee.Department">
+            <fetchPlan extends="_base"/>
             <loader/>
         </instance>
     </data>
@@ -28,18 +25,9 @@
     <dialogMode height="600"
                 width="800"/>
     <layout spacing="true" expand="editActions">
-        <form id="form" dataContainer="newsDc">
+        <form id="form" dataContainer="departmentDc">
             <column width="350px">
-                <entityPicker id="topicField" property="topic"/>
-                <textField id="descriptionField" property="description"/>
-                <entityPicker id="employeeField" property="employee">
-                    <actions>
-                        <action id="entityLookup" type="entity_lookup"/>
-                        <action id="entityClear" type="entity_clear"/>
-                    </actions>
-                </entityPicker>
-                <dateField id="datePublicationField" property="datePublication"/>
-                <checkBox id="acceptField" property="accept"/>
+                <textField id="nameField" property="name"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

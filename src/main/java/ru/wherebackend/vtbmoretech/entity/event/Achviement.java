@@ -15,12 +15,12 @@ import java.util.UUID;
 @Table(name = "VTBMT_ACHVIEMENT")
 @Entity(name = "vtbmt_Achviement")
 public class Achviement {
-    @InstanceName
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
 
+    @InstanceName
     @Column(name = "NAME")
     private String name;
 
