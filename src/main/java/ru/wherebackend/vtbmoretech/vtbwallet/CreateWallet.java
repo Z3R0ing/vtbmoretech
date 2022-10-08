@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.wherebackend.vtbmoretech.entity.Employee;
+import ru.wherebackend.vtbmoretech.url.BaseUrl;
 
 @Component("vtbmt_GetKeys")
 @Service
@@ -19,7 +20,9 @@ public class CreateWallet {
 
     @Autowired
     private CurrentAuthentication currentAuthentication;
-    String baseUrl = "https://hackathon.lsp.team/hk";
+
+    @Autowired
+    private BaseUrl baseUrl;
 
     //Получение ключей
     public Employee getKeys() {
@@ -36,7 +39,7 @@ public class CreateWallet {
                 MediaType mediaType = MediaType.parse("text/plain");
                 RequestBody body = RequestBody.create(mediaType, "");
                 Request request = new Request.Builder()
-                        .url(baseUrl + "/v1/wallets/new")
+                        .url(baseUrl.url + "/v1/wallets/new")
                         .method("POST", body)
                         .build();
                 Response response = client.newCall(request).execute();

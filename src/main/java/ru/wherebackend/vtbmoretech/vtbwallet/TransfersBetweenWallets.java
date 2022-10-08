@@ -4,6 +4,7 @@ import okhttp3.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import ru.wherebackend.vtbmoretech.url.BaseUrl;
 
 @Component("vtbmt_VtbNFT")
 @Service
@@ -12,7 +13,8 @@ public class TransfersBetweenWallets {
     @Autowired
     private CreateWallet createWallet;
 
-    String baseUrl = "https://hackathon.lsp.team/hk";
+    @Autowired
+    private BaseUrl baseUrl;
 
     //Перевод Matic с кошелька на кошелек
     public String transferMatic(String toPublicKey, String amount) {
@@ -23,7 +25,7 @@ public class TransfersBetweenWallets {
             MediaType mediaType = MediaType.parse("application/json");
             RequestBody body = RequestBody.create(mediaType, "{\r\n  \"fromPrivateKey\": \""+ privateKey +"\",\r\n  \"toPublicKey\": \"" + toPublicKey + "\",\r\n  \"amount\": "+ amount +"\r\n}");
             Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/transfers/matic")
+                    .url(baseUrl.url + "/v1/transfers/matic")
                     .method("POST", body)
                     .addHeader("Content-Type", "application/json")
                     .build();
@@ -44,7 +46,7 @@ public class TransfersBetweenWallets {
             MediaType mediaType = MediaType.parse("application/json");
             RequestBody body = RequestBody.create(mediaType, "{\r\n  \"fromPrivateKey\": \""+ privateKey +"\",\r\n  \"toPublicKey\": \"" + toPublicKey + "\",\r\n  \"amount\": "+ amount +"\r\n}");
             Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/transfers/ruble")
+                    .url(baseUrl.url + "/v1/transfers/ruble")
                     .method("POST", body)
                     .addHeader("Content-Type", "application/json")
                     .build();
@@ -65,7 +67,7 @@ public class TransfersBetweenWallets {
             MediaType mediaType = MediaType.parse("application/json");
             RequestBody body = RequestBody.create(mediaType, "{\r\n  \"fromPrivateKey\": \""+ privateKey +"\",\r\n  \"toPublicKey\": \"" + toPublicKey + "\",\r\n  \"amount\": "+ amount +"\r\n}");
             Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/transfers/nft")
+                    .url(baseUrl.url + "/v1/transfers/nft")
                     .method("POST", body)
                     .addHeader("Content-Type", "application/json")
                     .build();
@@ -85,7 +87,7 @@ public class TransfersBetweenWallets {
             MediaType mediaType = MediaType.parse("application/json");
             RequestBody body = RequestBody.create(mediaType, "");
             Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/transfers/status/" + transactionHash)
+                    .url(baseUrl.url + "/v1/transfers/status/" + transactionHash)
                     .method("POST", body)
                     .addHeader("Content-Type", "application/json")
                     .build();

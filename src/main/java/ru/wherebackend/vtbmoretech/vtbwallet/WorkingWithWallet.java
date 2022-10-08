@@ -4,6 +4,7 @@ import okhttp3.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import ru.wherebackend.vtbmoretech.url.BaseUrl;
 
 import java.util.Objects;
 
@@ -14,7 +15,8 @@ public class WorkingWithWallet {
     @Autowired
     private CreateWallet createWallet;
 
-    String baseUrl = "https://hackathon.lsp.team/hk";
+    @Autowired
+    private BaseUrl baseUrl;
 
     //Получение баланса
     public String getBalance() {
@@ -25,7 +27,7 @@ public class WorkingWithWallet {
             MediaType mediaType = MediaType.parse("text/plain");
             RequestBody body = RequestBody.create(mediaType, "");
             Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/wallets/" + publicKey +"/balance")
+                    .url(baseUrl.url + "/v1/wallets/" + publicKey +"/balance")
                     .method("GET", body)
                     .build();
             Response response = client.newCall(request).execute();
@@ -47,7 +49,7 @@ public class WorkingWithWallet {
             MediaType mediaType = MediaType.parse("application/json");
             RequestBody body = RequestBody.create(mediaType, "{\r\n  \"page\": 100,\r\n  \"offset\": 20,\r\n  \"sort\": \"asc\"\r\n}");
             Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/wallets/" + publicKey + "/history")
+                    .url(baseUrl.url + "/v1/wallets/" + publicKey + "/history")
                     .method("POST", body)
                     .addHeader("Content-Type", "application/json")
                     .build();
@@ -70,7 +72,7 @@ public class WorkingWithWallet {
             MediaType mediaType = MediaType.parse("application/json");
             RequestBody body = RequestBody.create(mediaType, "{\r\n  \"toPublicKey\": \"" + publicKey + "\",\r\n  \"uri\": \"ipfs://bafybeifesqvvmmtcjlmeso3zaqh56mhttgza2eglw7zwy4ryuyifduy4i/images/star.png\",\r\n  \"nftCount\": 1\r\n}");
             Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/nft/generate")
+                    .url(baseUrl.url + "/v1/nft/generate")
                     .method("POST", body)
                     .addHeader("Content-Type", "application/json")
                     .build();
@@ -93,7 +95,7 @@ public class WorkingWithWallet {
             MediaType mediaType = MediaType.parse("text/plain");
             RequestBody body = RequestBody.create(mediaType, "");
             Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/wallets/" + publicKey +"/nft/balance")
+                    .url(baseUrl.url + "/v1/wallets/" + publicKey +"/nft/balance")
                     .method("GET", body)
                     .build();
             Response response = client.newCall(request).execute();
@@ -115,7 +117,7 @@ public class WorkingWithWallet {
             MediaType mediaType = MediaType.parse("text/plain");
             RequestBody body = RequestBody.create(mediaType, "");
             Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/nft/" + tokenId)
+                    .url(baseUrl.url + "/v1/nft/" + tokenId)
                     .method("GET", body)
                     .build();
             Response response = client.newCall(request).execute();
@@ -137,7 +139,7 @@ public class WorkingWithWallet {
             MediaType mediaType = MediaType.parse("text/plain");
             RequestBody body = RequestBody.create(mediaType, "");
             Request request = new Request.Builder()
-                    .url(baseUrl + "/v1/nft/generate/" + transactionHash)
+                    .url(baseUrl.url + "/v1/nft/generate/" + transactionHash)
                     .method("GET", body)
                     .build();
             Response response = client.newCall(request).execute();
