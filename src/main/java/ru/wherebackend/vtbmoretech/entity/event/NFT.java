@@ -84,8 +84,8 @@ public class NFT {
     }
 
     @InstanceName
-    @DependsOnProperties({"name", "owner"})
+    @DependsOnProperties({"name", "owner", "token"})
     public String getInstanceName() {
-        return String.format("%s - %s", name, owner);
+        return String.format("%s - %s : %s", name, owner, token);
     }
 }

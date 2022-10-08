@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://NFTBrowse.caption"
+        focusComponent="nFTsTable">
+    <data readOnly="true">
+        <collection id="nFTsDc"
+                    class="ru.wherebackend.vtbmoretech.entity.event.NFT">
+            <fetchPlan extends="_base"/>
+            <loader id="nFTsDl">
+                <query>
+                    <![CDATA[select e from vtbmt_NFT e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="nFTsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="nFTsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="nFTsTable"
+                    width="100%"
+                    dataContainer="nFTsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="description"/>
+                <column id="dateOfReceiving"/>
+                <column id="token"/>
+                <column id="owner"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="nFTsTable.create"/>
+                <button id="editBtn" action="nFTsTable.edit"/>
+                <button id="removeBtn" action="nFTsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
