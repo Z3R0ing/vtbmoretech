@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.wherebackend.vtbmoretech.entity.employee.Employee;
 import ru.wherebackend.vtbmoretech.entity.event.Event;
+import ru.wherebackend.vtbmoretech.entity.event.NFT;
 import ru.wherebackend.vtbmoretech.entity.event.Participant;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 @org.springframework.web.bind.annotation.RestController
@@ -64,8 +67,25 @@ public class EventController {
                 .fetchPlan("_base")
                 .one();
         participant.setApproved(true);
-        // TODO check code
-        // TODO participant.getUser <- NFT из пула
+        Event event = dataManager.load(Event.class)
+                .query("select e from vtbmt_Event e whete e.code = :code")
+                .parameter("code", code)
+                .fetchPlan("_base")
+                .optional()
+                .orElse(null);
+        if (event != null) {
+            List<NFT> nft = dataManager.load(NFT.class)
+                    .query("select e from vtbmt_NFT e where e.dateOfReceiving is null")
+                    .fetchPlan("_base")
+                    .list();
+            Random rand = new Random();
+            NFT randomNft = nft.get(rand.nextInt(nft.size()));
+            randomNft.setDateOfReceiving(new Date());
+            randomNft.setOwner(participant.getEmployee());
+            dataManager.save(randomNft);
+        } else {
+            System.out.println("Code not working");
+        }
         return dataManager.save(participant);
     }
 }
