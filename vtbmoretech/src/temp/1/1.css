@@ -1,0 +1,58 @@
+#logo {
+    width: 7vw;
+}
+
+.background-color-notification {
+    background-color:rgba(92, 151, 241, 0.5);
+}
+
+.background-color-card {
+    background-color: rgb(0, 0, 0, 0.09);
+}
+
+.background-color-all {
+    /* background-color:rgba(193, 192, 192, 0.5); */
+}
+
+.col-flex {
+    /* display: flex; */
+}
+
+.col-card-count {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.col-card-count-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-count {
+    text-align: center;
+    margin: 0;
+    font-size: 1.6vw;
+}
+
+.img-achivements {
+    width: 100%;
+    height: 100%;
+}
+
+.row-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nav-list {
+    width: 100%;
+}
+.tab-content {
+    display: flex;
+    justify-content: center;
+}
+
+.row-achivements {
+    display: flex;
+    justify-content: space-around;
+}
