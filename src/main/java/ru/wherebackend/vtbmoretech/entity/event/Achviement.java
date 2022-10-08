@@ -30,6 +30,9 @@ public class Achviement {
     @Column(name = "DATE_OF_RECEIVING")
     private Date dateOfReceiving;
 
+    @Column(name = "AWARD")
+    private Integer award;
+
     public String getName() {
         return name;
     }
@@ -60,5 +63,13 @@ public class Achviement {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public Integer getAward() {
+        return award;
+    }
+
+    public void setAward(Integer award) {
+        this.award = award;
     }
 }
