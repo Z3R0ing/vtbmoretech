@@ -2,12 +2,10 @@ package ru.wherebackend.vtbmoretech.vtbwallet;
 
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.wherebackend.vtbmoretech.url.BaseUrl;
 
-@Component("vtbmt_VtbNFT")
-@Service
+@Service("vtbmt_VtbNFT")
 public class TransfersBetweenWallets {
 
     @Autowired

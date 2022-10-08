@@ -6,13 +6,11 @@ import okhttp3.*;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import ru.wherebackend.vtbmoretech.entity.Employee;
+import ru.wherebackend.vtbmoretech.entity.employee.Employee;
 import ru.wherebackend.vtbmoretech.url.BaseUrl;
 
-@Component("vtbmt_GetKeys")
-@Service
+@Service("vtbmt_GetKeys")
 public class CreateWallet {
 
     @Autowired

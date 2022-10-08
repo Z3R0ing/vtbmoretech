@@ -2,14 +2,12 @@ package ru.wherebackend.vtbmoretech.vtbwallet;
 
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.wherebackend.vtbmoretech.url.BaseUrl;
 
 import java.util.Objects;
 
-@Component("vtbmt_UserInfo")
-@Service
+@Service("vtbmt_UserInfo")
 public class WorkingWithWallet {
 
     @Autowired
