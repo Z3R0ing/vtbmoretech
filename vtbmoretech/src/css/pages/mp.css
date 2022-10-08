@@ -1,0 +1,17 @@
+.row-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nav-list {
+    width: 100%;
+}
+.tab-content {
+    display: flex;
+    justify-content: center;
+}
+
+.img-achivements {
+    width: 100%;
+    height: 100%;
+}
