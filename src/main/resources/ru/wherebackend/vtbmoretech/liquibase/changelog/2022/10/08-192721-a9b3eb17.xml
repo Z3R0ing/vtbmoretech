@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="vtbmt">
+        <createTable tableName="VTBMT_NFT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_NFT"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)"/>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+            <column name="DATE_OF_RECEIVING" type="DATETIME"/>
+            <column name="TOKEN" type="BIGINT"/>
+            <column name="EMPLOYEE_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="vtbmt">
+        <createTable tableName="VTBMT_SALE_NFT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VTBMT_SALE_NFT"/>
+            </column>
+            <column name="NFT_ID" type="UUID"/>
+            <column name="PRICE" type="DOUBLE"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="vtbmt">
+        <addColumn tableName="VTBMT_EVENT">
+            <column name="CODE" type="VARCHAR(255)"/>
+            <column name="CODE_EXP" type="DATETIME"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="4" author="vtbmt">
+        <addColumn tableName="VTBMT_NEWS">
+            <column name="TOPIC" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="5" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="EMPLOYEE_ID" baseTableName="VTBMT_NFT"
+                                 constraintName="FK_VTBMT_NFT_ON_EMPLOYEE" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_EMPLOYEE"/>
+    </changeSet>
+    <changeSet id="6" author="vtbmt">
+        <addForeignKeyConstraint baseColumnNames="NFT_ID" baseTableName="VTBMT_SALE_NFT"
+                                 constraintName="FK_VTBMT_SALE_NFT_ON_NFT" referencedColumnNames="ID"
+                                 referencedTableName="VTBMT_NFT"/>
+    </changeSet>
+    <changeSet id="7" author="vtbmt">
+        <dropForeignKeyConstraint baseTableName="VTBMT_ACHVIEMENT" constraintName="FK_VTBMT_ACHVIEMENT_ON_EVENT"/>
+    </changeSet>
+    <changeSet id="8" author="vtbmt">
+        <dropForeignKeyConstraint baseTableName="VTBMT_TOPIC" constraintName="FK_VTBMT_TOPIC_ON_DEPARTMENT"/>
+    </changeSet>
+    <changeSet id="9" author="vtbmt">
+        <dropTable cascadeConstraints="true" tableName="VTBMT_ACHVIEMENT"/>
+    </changeSet>
+    <changeSet id="11" author="vtbmt">
+        <dropColumn columnName="TOPIC_ID" tableName="VTBMT_NEWS"/>
+    </changeSet>
+</databaseChangeLog>

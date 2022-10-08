@@ -1,6 +1,7 @@
 package ru.wherebackend.vtbmoretech.entity.market;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
 import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import ru.wherebackend.vtbmoretech.entity.employee.Employee;
@@ -17,7 +18,6 @@ public class Thing {
     @Id
     private UUID id;
 
-    @InstanceName
     @Column(name = "NAME")
     String name;
 
@@ -92,5 +92,11 @@ public class Thing {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    @InstanceName
+    @DependsOnProperties({"name", "owner", "category"})
+    public String getInstanceName() {
+        return String.format("%s - %s / %s: %s (%s)", name, owner, category, price, count);
     }
 }
